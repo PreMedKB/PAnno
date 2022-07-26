@@ -3,6 +3,7 @@ include README.md
 include LICENSE
 
 recursive-include tests *
+recursive-include cpat *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 
