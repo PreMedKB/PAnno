@@ -7,7 +7,7 @@ A ranking model dedicated to inferring diplotype developed based on allele defin
 An annotation method was further proposed to summarize ***the drug response level*** (<b>decreased</b>, <b>moderate</b>, and <b>increased</b>) and ***the level of clinical evidence*** (<b>A</b> and <b>B</b>) for the resolved genotypes.
 
 <p align="center">
-<img src="./docs/design/architecture.png" width="40%" />
+<img src="./docs/images/architecture.png" width="40%" />
 </p>
 
 ## Status
@@ -67,11 +67,11 @@ The test VCF files of 1000 Genomes Project are stored in _./data/vcf_ directory,
 ### CPAT ranking model for diplotype inference
 Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. CPAT processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the CPAT ranking model. The output diplotypes with the highest ranking will then be annotated.
 <p align="center">
-<img src="./docs/design/diplotype_inference.png" width="80%" />
+<img src="./docs/images/diplotype_inference.png" width="80%" />
 </p>
 
 ### CPAT annotation method for predicting drug response at individual level
 This component aims to discover the “drug-genotype-response-evidence” relationship. CPAT annotation method translates the literal PGx knowledge about genotypes into quantitative scores. The association between multiple genotypes and a single drug is then further translated into an individual-level association with this drug. Then the individual responses to specific drugs are reported in terms of the strength of the response and the reliability of the evidence.
 <p align="center">
-<img src="./docs/design/clinical_annotation.png" width="60%" />
+<img src="./docs/images/clinical_annotation.png" width="60%" />
 </p>
