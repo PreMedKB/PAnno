@@ -3,7 +3,7 @@
 Clinical Pharmacogenomics Annotation Tool (CPAT) reports drug responses and prescribing recommendations by parsing the germline variant call format (VCF) file from NGS and the population to which the individual belongs. A ranking model dedicated to inferring diplotype developed based on allele definitions and population allele frequencies was introduced in CPAT. The predictive performance for diplotype was validated in comparison with four similar tools using the consensus diplotype data of the Genetic Testing Reference Materials Coordination Program (GeT-RM) as ground truth. An annotation method was further proposed to summarize ***the drug response level*** (<b>decreased</b>, <b>moderate</b>, and <b>increased</b>) and ***the level of clinical evidence*** (<b>A</b> and <b>B</b>) for the resolved genotypes. In summary, CPAT provides an end-to-end clinical pharmacogenomics decision support solution by resolving, annotating, and reporting germline variants in individuals.
 
 <p align="center">
-<img src="./assets/design/architecture.png" width="40%" />
+<img src="./docs/design/architecture.png" width="40%" />
 </p>
 
 ## Status
@@ -32,11 +32,11 @@ Please use the *three-letter abbreviation* as input. This is to prevent errors c
 ### CPAT ranking model for diplotype inference
 Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. CPAT processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the CPAT ranking model. The output diplotypes with the highest ranking will then be annotated.
 <p align="center">
-<img src="./assets/design/diplotype_inference.png" width="80%" />
+<img src="./docs/design/diplotype_inference.png" width="80%" />
 </p>
 
 ### CPAT annotation method for predicting drug response at individual level
 This component aims to discover the “drug-genotype-response-evidence” relationship. CPAT annotation method translates the literal PGx knowledge about genotypes into quantitative scores. The association between multiple genotypes and a single drug is then further translated into an individual-level association with this drug. Then the individual responses to specific drugs are reported in terms of the strength of the response and the reliability of the evidence.
 <p align="center">
-<img src="./assets/design/clinical_annotation.png" width="60%" />
+<img src="./docs/design/clinical_annotation.png" width="60%" />
 </p>
