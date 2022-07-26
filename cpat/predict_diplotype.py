@@ -2,9 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 
-import pandas as pd
 import numpy as np
-import re, itertools, json
+import re, itertools, json, os
 
 
 def parse_input_allele(vcf_df, info):
@@ -247,7 +246,8 @@ def predict_diplotype(vcf_alleles, info, race):
 
 
 def predict(vcf_df, race, gene_list):
-  cpat_dip_base = json.loads(open("./assets/dbs/cpat_dip_base.json").read())
+  cpat_dip_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_dip_base.json')
+  cpat_dip_base = json.loads(open(cpat_dip_fp).read())
   dic_diplotype = {}
   dic_diplotype_detail = {}
   for gene in gene_list:

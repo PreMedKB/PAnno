@@ -3,12 +3,14 @@
 
 
 from cpat import predict_diplotype
-import re
+import re, os
 import pandas as pd
-import numpy as np
 from pybedtools import BedTool
 
 def resolution(race, germline_vcf):
+  
+  cpat_bed_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat.hla.bed')
+  print(cpat_bed_fp)
   ## Filter loci based on PharmGKB's bed file: delete all loci in the user's vcf that are not in the cpat.bed file
   ## Extract the user's bed file: skip the lines starting with '##'
   vcf = []
@@ -23,7 +25,7 @@ def resolution(race, germline_vcf):
         vcf_bed.append([info[0], info[1], info[1]])
   
   vcf_bed_df = pd.DataFrame(vcf_bed, columns=['chrom', 'start', 'end'])
-  cpat_bed = pd.read_csv('./assets/bed/cpat.hla.bed', sep="\t", names=['chrom', 'start', 'end', 'rsid'])
+  cpat_bed = pd.read_csv(cpat_bed_fp, sep="\t", names=['chrom', 'start', 'end', 'rsid'])
   # Replace chr
   vcf_bed_df['chrom'] = vcf_bed_df['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
   cpat_bed['chrom'] = cpat_bed['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')

@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 
-import sqlite3
+import sqlite3, os
 import pandas as pd
 import numpy as np
 from pybedtools import BedTool
@@ -11,7 +11,8 @@ from pybedtools import BedTool
 def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   
   ## Connected database
-  conn = sqlite3.connect("./assets/dbs/CPAT_v20220421.db")
+  pgx_kb_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_kb.db')
+  conn = sqlite3.connect(pgx_kb_fp)
   cursor = conn.cursor()
   
   ## Find therapies, extract the table
