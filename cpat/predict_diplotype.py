@@ -4,7 +4,7 @@
 
 import pandas as pd
 import numpy as np
-import re, itertools, json, os
+import re, itertools, json
 
 
 def parse_input_allele(vcf_df, info):

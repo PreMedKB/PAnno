@@ -38,7 +38,7 @@ Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/PreMedKB/cpat/tarball/master
+    $ curl -OJL https://github.com/PreMedKB/CPAT/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/PreMedKB/cpat
-.. _tarball: https://github.com/PreMedKB/cpat/tarball/master
+.. _Github repo: https://github.com/PreMedKB/CPAT
+.. _tarball: https://github.com/PreMedKB/CPAT/tarball/master

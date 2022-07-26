@@ -2,10 +2,10 @@
 # -*- coding: UTF-8 -*-
 
 
-import time
+import time, os
 
-def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, outdir, sample_id):
-  fp = "%s/%s.cpat.html" % (outdir, sample_id)
+def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id):
+  
   with open(fp, 'w+') as f:
     ## Style
     style="""
@@ -15,7 +15,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     <meta charset="UTF-8">
     <title>CPAT Report</title>
     <script src="https://kit.fontawesome.com/e540049a97.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://raw.githack.com/premedkb/cpat/main/assets/css/custom.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/PreMedKB/CPAT/main/assets/css/custom.css">
     <ul>
       <p></p>
       <li><a href="#home"><b>Home</b></a></li>

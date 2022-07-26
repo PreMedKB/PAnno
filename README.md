@@ -28,7 +28,7 @@ CPAT directly uses the NGS-derived VCF file as input and assumes that it has und
 There are nine biogeographic groups provided by CPAT: **AAC** (African American/Afro-Caribbean), **AME** (American), **EAS** (East Asian), **EUR** (European), **LAT** (Latino), **NEA** (Near Eastern), **OCE** (Oceanian), **SAS** (Central/South Asian), **SSA** (Sub-Saharan African). More information is available at https://www.pharmgkb.org/page/biogeographicalGroups.
 
 Please use the *three-letter abbreviation* as input. This is to prevent errors caused by special symbols such as spaces.
-## CPAT Core Components
+## Core Components
 ### CPAT ranking model for diplotype inference
 Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. CPAT processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the CPAT ranking model. The output diplotypes with the highest ranking will then be annotated.
 <p align="center">

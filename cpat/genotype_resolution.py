@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 
-import predict_diplotype
+from cpat import predict_diplotype
 import re
 import pandas as pd
 import numpy as np

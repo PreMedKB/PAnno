@@ -3,30 +3,40 @@
 
 """Console script for cpat."""
 
-import genotype_resolution, clinical_annotation, pgx_report
-import getopt, sys
+from cpat import genotype_resolution, clinical_annotation, pgx_report
+import getopt, sys, os
 
-def main(argv):
-
-  version = '1.0.0'
+def main():
+  
+  version = '0.1.0'
   help = '''
   Usage: python cpat.py [OPTIONS]
+  
   CPAT takes the variant calling format (VCF) file and population information as input
   and outputs an HTML report of drug responses with prescription recommendations.
+  
   Options:
-    -s, --sample_id                 Sample ID.
-    -i, --germline_vcf              Unannotated vcf file, preferably germline variant.
-    -p, --population                The three-letter abbreviation for biogeographic groups:
+    
+    -s, --sample_id                 Sample ID that will be displayed in the CPAT report.
+    
+    -i, --germline_vcf              Unannotated VCF file, preferably germline variant.
+    
+    -p, --population [AAC|AME|EAS|EUR|LAT|NEA|OCE|SAS|SSA]
+                                    The three-letter abbreviation for biogeographic groups:
                                     AAC (African American/Afro-Caribbean), AME (American),
-                                    EAS (East Asian), EUR (European), LAT (Latino), NEA (Near Eastern),
-                                    OCE (Oceanian), SAS (Central/South Asian), SSA (Sub-Saharan African).
+                                    EAS (East Asian), EUR (European), LAT (Latino),
+                                    NEA (Near Eastern), OCE (Oceanian),
+                                    SAS (Central/South Asian), SSA (Sub-Saharan African).
+    
     -o, --outdir TEXT               Create report in the specified output path.
+    
     -v, --version                   Show the version and exit.
+    
     -h, --help                      Show this message and exit.
   '''
   
   try:
-    opts, args = getopt.getopt(argv, "hvs:i:p:o:", ["help", "version", "sample_id=", "germline_vcf=", "population=", "outdir="])
+    opts, args = getopt.getopt(sys.argv[1:], "hvs:i:p:o:", ["help", "version", "sample_id=", "germline_vcf=", "population=", "outdir="])
   except getopt.GetoptError:
     print(help)
   
@@ -59,10 +69,21 @@ def main(argv):
     pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
     
     print('  - Generating CPAT report ...')
+    outdir = os.path.dirname(outdir)
+    is_exists = os.path.exists(outdir)
+    if not is_exists:
+      print('{0} does not exist and is trying to create it.'.format(outdir))
+      os.makedir(outdir)
+    
+    fp = "%s/%s.cpat.html" % (outdir, sample_id)
     pgx_report.report(pop_dic[population], pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, outdir, sample_id)
+    
+    print('  Your CPAT report has been completed and is located at %s.' % fp)
+    print('\n    ^ _ ^')
+  
   except:
-    print('Error appeared.')
+    print('  ERROR occurred!')
 
 
 if __name__ == "__main__":
-  main(sys.argv[1:])
+  main()
