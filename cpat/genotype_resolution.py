@@ -10,7 +10,7 @@ from pybedtools import BedTool
 def resolution(race, germline_vcf):
   
   cpat_bed_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat.hla.bed')
-  print(cpat_bed_fp)
+  
   ## Filter loci based on PharmGKB's bed file: delete all loci in the user's vcf that are not in the cpat.bed file
   ## Extract the user's bed file: skip the lines starting with '##'
   vcf = []
