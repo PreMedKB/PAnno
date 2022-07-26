@@ -41,11 +41,14 @@ cpat -s sample_id -i germline_vcf -p population -o outdir
 ```
 
 ### Input data
-#### VCF file
-As the diplotype definitions only match to the human genome _GRCh38_ and given its increasing generality, CPAT requires that the VCF file is based on _GRCh38_.
+#### 1. Germline VCF file
 
-CPAT directly uses the NGS-derived VCF file as input and assumes that it has undergone quality control. Therefore, if the VCF file is of poor quality, inaccurate genotype resolution results and inappropriate clinical recommendations may be reported.
-#### Population
+CPAT directly uses the NGS-derived germline VCF file as input and assumes it has undergone quality control. Therefore, if the VCF file is of poor quality, inaccurate genotypes and inappropriate clinical recommendations may be reported.
+
+CPAT requires the VCF file aligned to the GRCh38 reference genome given the increasing generality and the built-in diplotype definition dependency version.
+
+
+#### 2. Population
 There are nine biogeographic groups supported by CPAT:
 
 **AAC** (African American/Afro-Caribbean), **AME** (American), **EAS** (East Asian), **EUR** (European), **LAT** (Latino), **NEA** (Near Eastern), **OCE** (Oceanian), **SAS** (Central/South Asian), **SSA** (Sub-Saharan African).

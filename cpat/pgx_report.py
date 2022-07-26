@@ -10,6 +10,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     
     ## Style
     css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+
     style="""
     <!doctype html>
     <html lang="en">
@@ -17,7 +18,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     <meta charset="UTF-8">
     <title>CPAT Report</title>
     <script src="https://kit.fontawesome.com/e540049a97.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="%s">
+    <link rel="stylesheet" type="text/css" href="%s">
     <ul>
       <p></p>
       <li><a href="#home"><b>Home</b></a></li>

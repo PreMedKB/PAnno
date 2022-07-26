@@ -76,7 +76,7 @@ def main():
       os.makedir(outdir)
     
     fp = "%s/%s.cpat.html" % (outdir, sample_id)
-    pgx_report.report(pop_dic[population], pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, outdir, sample_id)
+    pgx_report.report(pop_dic[population], pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
     
     print('  Your CPAT report has been completed and is located at %s.' % fp)
     print('\n    ^ _ ^')

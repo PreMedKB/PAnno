@@ -28,7 +28,7 @@
 
   pre,
   blockquote {
-    border: 1px solid #999;
+    border: 1px solid #707070;
     page-break-inside: avoid;
   }
 
@@ -163,13 +163,13 @@ img {
 
 a,
 a:visited {
-  color: #3498db;
+  color: #3C689B;
 }
 
 a:hover,
 a:focus,
 a:active {
-  color: #2980b9;
+  color: #3C689B;
 }
 
 pre {
@@ -180,6 +180,7 @@ pre {
 
 blockquote {
   margin: 0;
+  color: #666;
   font-style: italic;
   text-align: left;
 }
@@ -191,7 +192,7 @@ li {
 }
 
 p {
-  color: #777;
+  color: #444;
   text-align: justify;
 }
 
