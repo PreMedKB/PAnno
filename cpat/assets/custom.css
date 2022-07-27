@@ -337,7 +337,6 @@ li a:hover:not(.active) {
 .side-nav .mqc-nav li {
   position: relative;
 }
-
 #side-nav-handle {
   display: block;
   position: absolute;
@@ -383,6 +382,7 @@ li a:hover:not(.active) {
 #page_title img {
   width: 350px;
 }
+
 .head_lead {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 10px;
@@ -390,7 +390,6 @@ li a:hover:not(.active) {
   font-weight: 300;
   line-height: 1.5;
 }
-
 .main_lead {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 20px;
