@@ -397,3 +397,20 @@ li a:hover:not(.active) {
   font-weight: 300;
   line-height: 1.5;
 }
+
+
+.footer {
+  background-color: #ededed;
+  border-top: 1px solid #ccc;
+  font-size: 0.9em;
+  color: #999;
+  padding: 20px 0;
+  margin-top: 50px;
+}
+.footer p {
+  margin: 0;
+}
+.footer a {
+  color: #999;
+  text-decoration: underline;
+}
