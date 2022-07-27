@@ -9,12 +9,12 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
   with open(fp, 'w+') as f:
     
     ## Style
-    css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+    # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
     # bootstrap_css_fp = os.path.join(os.path.dirname(__file__), 'assets/bootstrap.min.css')
     # jquery_css_fp = os.path.join(os.path.dirname(__file__), 'assets/jquery.toast.css')
     # logo1_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_logo1.png')
     # logo2_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_logo2.png')
-    # css_fp = 'https://raw.githack.com/premedkb/cpat/main/cpat/assets/custom.css'
+    css_fp = 'https://raw.githack.com/premedkb/cpat/main/cpat/assets/custom.css'
     logo1_fp = 'https://raw.githubusercontent.com/premedkb/cpat/main/docs/images/cpat_logo1.png'
     logo2_fp = 'https://raw.githubusercontent.com/premedkb/cpat/main/docs/images/cpat_logo2.png'
     
