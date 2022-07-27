@@ -187,6 +187,22 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       When using results obtained from CPAT, you agree to cite CPAT.<br><br>
     </p>
     </div>
+    
+    <div class="footer">
+      <div class="container-fluid">
+      <p>
+          <strong>
+              <a href="https://github.com/PreMedKB/CPAT" target="_blank">CPAT v0.1.0</a>
+          </strong>
+          - Written by Yaqing Liu, et al.,
+          available on <a href="https://github.com/PreMedKB/CPAT" target="_blank">GitHub</a>, 
+          <a href="https://pypi.python.org/pypi/cpat/" target="_blank">PyPI</a>, and <a href="http://anaconda.org/" target="_blank">Conda</a>.
+      </p>
+      <p>
+        Copyright &copy; 2021-2022 Center for Pharmacogenomics, Fudan University, China. All Rights Reserved.
+      </p>
+      </div>
+    </div>
     </body>
     </html>
     """

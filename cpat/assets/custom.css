@@ -414,3 +414,9 @@ li a:hover:not(.active) {
   color: #999;
   text-decoration: underline;
 }
+.container-fluid {
+  padding-right:15px;
+  padding-left:15px;
+  margin-right:auto;
+  margin-left:auto
+}
