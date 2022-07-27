@@ -21,12 +21,12 @@ CPAT is still under _active development_. In the current release, you should onl
 - Python3 >= 3.6
 
 ## Installation
-You can install CPAT from PyPI using pip as follows:
+You can install CPAT from [PyPI](!https://pypi.python.org/pypi/cpat/) using pip as follows:
 ```Shell
 pip install cpat
 ```
 
-Alternatively, you can install using Conda from the bioconda channel:
+Alternatively, you can install using [Conda](http://anaconda.org/) from the [bioconda channel](https://bioconda.github.io/):
 ```Shell
 conda install -c bioconda cpat
 ```
