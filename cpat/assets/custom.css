@@ -189,10 +189,9 @@ p {
 
 /* Main page */
 .main_page {
-  margin-left:12.5rem;
+  margin-left:10rem;
   margin-right:0rem;
   padding:1px 16px;
-  height:1000px;
 }
 
 /* Box */
@@ -247,6 +246,7 @@ ul {
   padding: 0;
   width: 11rem;
   background-color: #f1f1f1;
+  border-right: 0.8px solid #ccc;
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -400,15 +400,16 @@ li a:hover:not(.active) {
 
 
 .footer {
-  background-color: #ededed;
-  border-top: 1px solid #ccc;
-  font-size: 0.9em;
+  background-color: #f1f1f1;
+  border-top: 0.8px solid #ccc;
+  font-size: 0.7em;
   color: #999;
   padding: 20px 0;
   margin-top: 50px;
 }
 .footer p {
-  margin: 0;
+  margin-left: 10px;
+  color: #999;
 }
 .footer a {
   color: #999;

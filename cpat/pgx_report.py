@@ -186,7 +186,6 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       <em>Treatment Decisions are Responsibility of Physician:</em> Drugs referenced in this report may not be suitable for a particular patient. The selection of any, all, or none of the drugs associated with potential clinical benefit (or potential lack of clinical benefit) resides entirely within the discretion of the treating physician. Indeed, the information in this report must be considered in conjunction with all other relevant information regarding a particular patient, before the patient's treating physician recommends a course of treatment. Decisions on patient care and treatment must be based on the independent medical judgment of the treating physician, taking into consideration all applicable information concerning the patient's condition, such as patient and family history, physical examinations, information from other diagnostic tests, and patient preferences, following the standard of care in a given community. A treating physician's decisions should not be based on a single test, such as this test or the information contained in this report.<br>
       When using results obtained from CPAT, you agree to cite CPAT.<br><br>
     </p>
-    </div>
     
     <div class="footer">
       <div class="container-fluid">
@@ -202,6 +201,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
         Copyright &copy; 2021-2022 Center for Pharmacogenomics, Fudan University, China. All Rights Reserved.
       </p>
       </div>
+    </div>
     </div>
     </body>
     </html>
