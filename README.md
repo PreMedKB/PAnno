@@ -1,4 +1,4 @@
-<p align="left"> <img src="./docs/images/cpat_logo1.png" width="40%"/> </p>
+<p align="left" margin-bottom="-2rem"> <img src="./docs/images/cpat_logo1.png" width="40%"/> </p>
 
 ## CPAT: Clinical Pharmacogenomics Annotation Tool
 CPAT reports drug responses and prescribing recommendations by parsing the germline variant call format (VCF) file from NGS and the population to which the individual belongs. CPAT provides an end-to-end clinical pharmacogenomics decision support solution by resolving, annotating, and reporting germline variants in individuals.
