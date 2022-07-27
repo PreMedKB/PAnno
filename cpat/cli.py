@@ -59,25 +59,30 @@ def main():
   try:
     population = population.upper()
     pop_dic = {'AAC': 'African American/Afro-Caribbean', 'AME': 'American', 'SAS': 'Central/South Asian', 'EAS': 'East Asian', 'EUR': 'European', 'LAT': 'Latino', 'NEA': 'Near Eastern', 'OCE': 'Oceanian', 'SSA': 'Sub-Saharan African'}
+
+    # Check input data
     if population not in pop_dic.keys():
       print('The input population is not included in CPAT. Please check if the abbreviation is used correctly.')
-    
-    print('  - Parsing PGx related genotypes ...')
-    dic_diplotype, dic_rs2gt, hla_subtypes = genotype_resolution.resolution(pop_dic[population], germline_vcf)
-    
-    print('  - Annotating clinical information ...')
-    pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
-    
-    print('  - Generating CPAT report ...')
+      sys.exit(1)
+    if not os.path.exists(germline_vcf):
+      print('The input germline VCF file does not exist.')
+      sys.exit(1)
     outdir = os.path.dirname(outdir)
     is_exists = os.path.exists(outdir)
     if not is_exists:
       print('{0} does not exist and is trying to create it.'.format(outdir))
       os.makedir(outdir)
     
+    # Start running CPAT
+    print('  - Parsing PGx related genotypes ...')
+    dic_diplotype, dic_rs2gt, hla_subtypes = genotype_resolution.resolution(pop_dic[population], germline_vcf)
+    print('  - Annotating clinical information ...')
+    pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
+    print('  - Generating CPAT report ...')
     fp = "%s/%s.cpat.html" % (outdir, sample_id)
     pgx_report.report(pop_dic[population], pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
     
+    # Finish the task
     print('  Your CPAT report has been completed and is located at %s.' % fp)
     print('\n    ^ _ ^')
   

@@ -10,11 +10,11 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     
     ## Style
     # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
-    css_fp = 'https://raw.githack.com/premedkb/cpat/main/cpat/assets/custom.css'
     # bootstrap_css_fp = os.path.join(os.path.dirname(__file__), 'assets/bootstrap.min.css')
     # jquery_css_fp = os.path.join(os.path.dirname(__file__), 'assets/jquery.toast.css')
     # logo1_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_logo1.png')
     # logo2_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_logo2.png')
+    css_fp = 'https://raw.githack.com/premedkb/cpat/main/cpat/assets/custom.css'
     logo1_fp = 'https://raw.githubusercontent.com/premedkb/cpat/main/docs/images/cpat_logo1.png'
     logo2_fp = 'https://raw.githubusercontent.com/premedkb/cpat/main/docs/images/cpat_logo2.png'
     
@@ -34,7 +34,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
         <ul class="mqc-nav collapse navbar-collapse">
         <h1>
           <a href="#">
-            <img src="%s" title="CPAT">
+            <img src="%s" alt="CPAT">
             <br class="hidden-xs">
             <small class="hidden-xs">%s</small>
           </a>
@@ -60,7 +60,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     basic_info = """
     <h1 id="page_title">
       <a href="https://github.com/PreMedKB/CPAT" target="_blank">
-        <img src="%s" title="CPAT">
+        <img src="%s" alt="CPAT">
       </a>
     </h1>
     <p class="head_lead">
