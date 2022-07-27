@@ -67,15 +67,18 @@ The report is created in `${sample_id}.html` at the `outdir` by default.
 For more detailed instructions, run `cpat -h`.
 
 ## Examples
-We reanalyzed the germline mutations of 88 samples from the GeT-RM PGx study using CPAT.
+We reanalyzed the germline mutations of 88 samples from the GeT-RM PGx study using CPAT. The generated PGx report is available at https://github.com/PreMedKB/CPAT-examples.
 
-The generated PGx report is available at https://github.com/PreMedKB/CPAT-examples.
+Here is a snapshot from the CPAT report:
+<p align="center">
+<img src="./docs/images/cpat_report.png" width="100%" />
+</p>
 
 ## Core Components
 ### CPAT ranking model for diplotype inference
 Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. CPAT processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the CPAT ranking model. The output diplotypes with the highest ranking will then be annotated.
 <p align="center">
-<img src="./docs/images/diplotype_inference.png" width="80%" />
+<img src="./docs/images/diplotype_inference.png" width="90%" />
 </p>
 
 ### CPAT annotation method for predicting drug response at individual level
