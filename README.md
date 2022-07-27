@@ -67,7 +67,9 @@ The report is created in `${sample_id}.html` at the `outdir` by default.
 For more detailed instructions, run `cpat -h`.
 
 ## Examples
-The test VCF files of 1000 Genomes Project are stored in _./data/vcf_ directory, and the corresponding CPAT reports are stored in _./data/report_ directory.
+We reanalyzed the germline mutations of 88 samples from the GeT-RM PGx study using CPAT.
+
+The generated PGx report is available at https://github.com/PreMedKB/CPAT-examples.
 
 ## Core Components
 ### CPAT ranking model for diplotype inference
