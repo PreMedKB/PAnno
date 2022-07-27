@@ -24,6 +24,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     <head>
       <meta charset="UTF-8">
       <title>CPAT Report</title>
+      <link rel="shortcut icon" href="%s">
       <script src="https://kit.fontawesome.com/e540049a97.js" crossorigin="anonymous"></script>
       <link rel="stylesheet" type="text/css" href="%s">
     </head>
