@@ -1,5 +1,5 @@
 <p align="left">
-<img src="./docs/images/cpat_logo1.png" width="60%" />
+<img src="./docs/images/cpat_logo1.png" width="40%" />
 </p>
 
 ## CPAT: Clinical Pharmacogenomics Annotation Tool
