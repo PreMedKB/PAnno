@@ -189,9 +189,9 @@ p {
 
 /* Main page */
 .main_page {
-  margin-left:10rem;
+  margin-left:13rem;
   margin-right:0rem;
-  padding:1px 16px;
+  padding:1px 10px;
 }
 
 /* Box */
@@ -402,22 +402,19 @@ li a:hover:not(.active) {
 .footer {
   background-color: #f1f1f1;
   border-top: 0.8px solid #ccc;
-  font-size: 0.7em;
+  font-size: 0.9rem;
   color: #999;
-  padding: 20px 0;
-  margin-top: 50px;
+  margin-left: 10rem;
+  margin-right: -3rem;
+  padding: 1px 1px;
 }
 .footer p {
-  margin-left: 10px;
+  margin-left: 3rem;
+  padding: 1px 10px;
+  font-size: 0.8rem;
   color: #999;
 }
 .footer a {
   color: #999;
   text-decoration: underline;
-}
-.container-fluid {
-  padding-right:15px;
-  padding-left:15px;
-  margin-right:auto;
-  margin-left:auto
 }

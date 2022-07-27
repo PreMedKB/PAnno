@@ -9,16 +9,16 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
   with open(fp, 'w+') as f:
     
     ## Style
-    # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+    css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
     # bootstrap_css_fp = os.path.join(os.path.dirname(__file__), 'assets/bootstrap.min.css')
     # jquery_css_fp = os.path.join(os.path.dirname(__file__), 'assets/jquery.toast.css')
     # logo1_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_logo1.png')
     # logo2_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_logo2.png')
-    css_fp = 'https://raw.githack.com/premedkb/cpat/main/cpat/assets/custom.css'
+    # css_fp = 'https://raw.githack.com/premedkb/cpat/main/cpat/assets/custom.css'
     logo1_fp = 'https://raw.githubusercontent.com/premedkb/cpat/main/docs/images/cpat_logo1.png'
     logo2_fp = 'https://raw.githubusercontent.com/premedkb/cpat/main/docs/images/cpat_logo2.png'
     
-    style="""
+    head_nav="""
     <!doctype html>
     <html lang="en">
     <head>
@@ -54,7 +54,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     
     <div class="main_page">
     """
-    print(style%(css_fp, logo2_fp, 'v0.1.0'), file=f)
+    print(head_nav%(logo2_fp, css_fp, logo2_fp, 'v0.1.0'), file=f)
    
     ## Part 0: Basic information
     basic_info = """
@@ -184,25 +184,23 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       <em>Note:</em> A finding of biomarker alteration does not necessarily indicate pharmacologic effectiveness (or lack thereof) of any drug or treatment regimen; a finding of no biomarker alteration does not necessarily indicate lack of pharmacologic effectiveness (or effectiveness) of any drug or treatment regimen.<br>
       <em>No Guarantee of Clinical Benefit:</em> This Report makes no promises or guarantees that a particular drug will be effective in the treatment of disease in any patient. This report also makes no promises or guarantees that a drug with a potential lack of clinical benefit will provide no clinical benefit.<br>
       <em>Treatment Decisions are Responsibility of Physician:</em> Drugs referenced in this report may not be suitable for a particular patient. The selection of any, all, or none of the drugs associated with potential clinical benefit (or potential lack of clinical benefit) resides entirely within the discretion of the treating physician. Indeed, the information in this report must be considered in conjunction with all other relevant information regarding a particular patient, before the patient's treating physician recommends a course of treatment. Decisions on patient care and treatment must be based on the independent medical judgment of the treating physician, taking into consideration all applicable information concerning the patient's condition, such as patient and family history, physical examinations, information from other diagnostic tests, and patient preferences, following the standard of care in a given community. A treating physician's decisions should not be based on a single test, such as this test or the information contained in this report.<br>
-      When using results obtained from CPAT, you agree to cite CPAT.<br><br>
+      When using results obtained from CPAT, you agree to cite CPAT.
     </p>
-    
+    </div>
+
     <div class="footer">
-      <div class="container-fluid">
       <p>
-          <strong>
-              <a href="https://github.com/PreMedKB/CPAT" target="_blank">CPAT v0.1.0</a>
-          </strong>
-          - Written by Yaqing Liu, et al.,
-          available on <a href="https://github.com/PreMedKB/CPAT" target="_blank">GitHub</a>, 
-          <a href="https://pypi.python.org/pypi/cpat/" target="_blank">PyPI</a>, and <a href="http://anaconda.org/" target="_blank">Conda</a>.
-      </p>
-      <p>
+        <strong>
+          <a href="https://github.com/PreMedKB/CPAT" target="_blank">CPAT v0.1.0</a>
+        </strong>
+        - Written by Yaqing Liu, et al.,
+        available at <a href="https://github.com/PreMedKB/CPAT" target="_blank">GitHub</a>, 
+        <a href="https://pypi.python.org/pypi/cpat/" target="_blank">PyPI</a>, and <a href="http://anaconda.org/" target="_blank">Conda</a>.
+        <br>
         Copyright &copy; 2021-2022 Center for Pharmacogenomics, Fudan University, China. All Rights Reserved.
       </p>
-      </div>
     </div>
-    </div>
+    
     </body>
     </html>
     """
