@@ -1,6 +1,6 @@
 <p align="left" margin-bottom="-2rem"> <img src="./docs/images/panno_logo.png" width="40%"/> </p>
 
-## PAnno: Clinical Pharmacogenomics Annotation Tool
+## PAnno: **P**harmacogenomics **Anno**tation Tool
 PAnno reports drug responses and prescribing recommendations by parsing the germline variant call format (VCF) file from NGS and the population to which the individual belongs. PAnno provides an end-to-end clinical pharmacogenomics decision support solution by resolving, annotating, and reporting germline variants in individuals.
 
 A ranking model dedicated to inferring diplotype developed based on allele definitions and population allele frequencies was introduced in PAnno. The predictive performance for diplotype was validated in comparison with four similar tools using the consensus diplotype data of the Genetic Testing Reference Materials Coordination Program (GeT-RM) as ground truth.
