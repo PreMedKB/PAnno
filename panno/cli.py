@@ -17,9 +17,9 @@ def main():
   
   Options:
     
-    -s, --sample_id                 Sample ID that will be displayed in the PAnno report.
-    
-    -i, --germline_vcf              Unannotated VCF file, preferably germline variant.
+    -s, --sample_id TEXT            Sample ID that will be displayed in the PAnno report.
+
+    -i, --germline_vcf TEXT         Unannotated VCF file, preferably germline variant.
     
     -p, --population [AAC|AME|EAS|EUR|LAT|NEA|OCE|SAS|SSA]
                                     The three-letter abbreviation for biogeographic groups:
