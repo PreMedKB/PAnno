@@ -15,11 +15,11 @@ An annotation method was further proposed to summarize ***the drug response leve
 PAnno is still under _active development_. In the current release, you should only use it to evaluate whether PAnno will compile and run properly on your system. All information in the PAnno report is interpreted directly from the uploaded VCF file. Users recognize that they are using PAnno at their own risk.
 
 ## Installation
-You can install PAnno from [PyPI](!https://pypi.python.org/pypi/panno/) using pip as follows:
+You can install PAnno from [PyPI](!https://pypi.org/project/panno/) using pip as follows:
 ```Shell
 pip install panno
 ```
-
+https://pypi.org/project/panno/0.1.0/
 Alternatively, you can install using [Conda](http://anaconda.org/) from the [bioconda channel](https://bioconda.github.io/):
 ```Shell
 conda install -c bioconda panno

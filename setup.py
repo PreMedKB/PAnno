@@ -35,7 +35,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
-    description="Pharmacogenomics Annotation Tool for Clinical Genomic Testing.",
+    description="PAnno is a Pharmacogenomics Annotation tool for clinical genomic testing.",
     entry_points={
         'console_scripts': [
             'panno=panno.cli:main',
@@ -43,6 +43,7 @@ setup(
     },
     install_requires=requirements,
     long_description=readme + '\n\n' + history,
+    long_description_content_type='text/markdown',
     include_package_data=True,
     keywords=['pharmacology', 'drug responses', 'genomics', 'bioinformatics'],
     name='panno',
