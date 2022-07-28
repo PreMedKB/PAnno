@@ -19,8 +19,8 @@ You can install PAnno from [PyPI](!https://pypi.org/project/panno/) using pip as
 ```Shell
 pip install panno
 ```
-https://pypi.org/project/panno/0.1.0/
-Alternatively, you can install using [Conda](http://anaconda.org/) from the [bioconda channel](https://bioconda.github.io/):
+
+Alternatively, you can install using [Anaconda](https://anaconda.org/lyaqing/panno):
 ```Shell
 conda install -c bioconda panno
 ```
