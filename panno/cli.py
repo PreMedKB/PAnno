@@ -84,7 +84,7 @@ def main():
     
     # Finish the task
     print('  Your PAnno report has been completed and is located at %s.' % fp)
-    print('\n    ^ _ ^')
+    print('\n    ^ _ ^\n\n')
   
   except:
     print('  ERROR occurred!')
