@@ -1,6 +1,9 @@
 <p align="left" margin-bottom="-2rem"> <img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/panno_logo.png" width="40%"/> </p>
 
 ## PAnno: **P**harmacogenomics **Anno**tation Tool
+
+![PyPI](https://img.shields.io/pypi/v/panno?color=pink)  ![Conda](https://img.shields.io/conda/v/lyaqing/panno?color=blue&label=conda) ![AppVeyor](https://img.shields.io/appveyor/build/PreMedKB/PAnno)
+
 PAnno reports drug responses and prescribing recommendations by parsing the germline variant call format (VCF) file from NGS and the population to which the individual belongs. PAnno provides an end-to-end clinical pharmacogenomics decision support solution by resolving, annotating, and reporting germline variants in individuals.
 
 A ranking model dedicated to inferring diplotype developed based on allele definitions and population allele frequencies was introduced in PAnno. The predictive performance for diplotype was validated in comparison with four similar tools using the consensus diplotype data of the Genetic Testing Reference Materials Coordination Program (GeT-RM) as ground truth.
@@ -77,7 +80,7 @@ The report is created in `${sample_id}.html` at the `outdir` by default.
 For more detailed instructions, run `panno -h`.
 
 ## Examples
-We reanalyzed the germline mutations of 88 samples from the GeT-RM PGx study using PAnno. The generated PGx report is available at https://github.com/PreMedKB/PAnno-examples.
+We analyzed the germline variants of 88 samples from the GeT-RM PGx study using PAnno. The generated PGx report is available at https://github.com/PreMedKB/PAnno-analysis/report.
 
 Here is a snapshot from the PAnno report:
 <p align="center">
