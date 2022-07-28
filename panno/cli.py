@@ -8,7 +8,7 @@ import getopt, sys, os
 
 def main():
   
-  version = '0.1.0'
+  version = '0.1.1'
   help = '''
   Usage: python panno.py [OPTIONS]
   
