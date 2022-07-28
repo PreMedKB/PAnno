@@ -1,1 +1,1 @@
-"""Unit test package for cpat."""
+"""Unit test package for panno."""

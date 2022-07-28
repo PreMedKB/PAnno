@@ -1,4 +1,4 @@
-"""Top-level package for CPAT."""
+"""Top-level package for PAnno."""
 
 from __future__ import absolute_import
 

@@ -26,7 +26,7 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   # Part 1: Diplotype and haplotypes
   anno_ids_multi = []
   for gene in dic_diplotype.keys():
-    for cpat_dip in dic_diplotype[gene]['step2_res'].split("; "):
+    for panno_dip in dic_diplotype[gene]['step2_res'].split("; "):
       # For genes like VKORC1, IFNL3, ABCG2, CACNA1S...
       if len(dic_diplotype[gene]['detail']) == 1:
         res_df = ann_df[(ann_df.Gene == gene) & (ann_df.Variant == dic_diplotype[gene]['detail'][0][3])]
@@ -37,14 +37,14 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
           genotype = {row.Alleles[0], row.Alleles[1]}
         else:
           genotype = set(row.Alleles.split("/"))
-        # Compare the genotype in PharmGKB with CPAT predicted.
-        if genotype == set(cpat_dip.split("/")):
+        # Compare the genotype in PharmGKB with PAnno predicted.
+        if genotype == set(panno_dip.split("/")):
           anno_ids_multi.append(row.ID)
   
   # Part 2: Single-locus based on rsIDs
   anno_ids_single = []
   for rsid in dic_rs2gt.keys():
-    cpat_gt = set(dic_rs2gt[rsid])
+    panno_gt = set(dic_rs2gt[rsid])
     sub_df = ann_df[ann_df.Variant == rsid]
     for index, row in sub_df.iterrows():
       # HLA subtyping
@@ -55,11 +55,11 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
         genotype = {row.Alleles[0], row.Alleles[1]}
       else:
         genotype = set(row.Alleles.split("/"))
-      if genotype == cpat_gt:
+      if genotype == panno_gt:
         anno_ids_single.append(row.ID)
   
   #########################################
-  # Fetch data from CPAT database
+  # Fetch data from PAnno database
   res1 = cursor.execute("SELECT Gene, VariantOrHaplotype, Drug, Phenotypes, EvidenceLevel, Score, PhenotypeCategoryID, GenotypeOrAllele, Annotation, Function, URL, SpecialtyPopulation, GeneID, DrugID FROM ClinAnn WHERE EvidenceLevel != 3 AND EvidenceLevel != 4 AND ID IN (%s);" % ','.join([str(i) for i in anno_ids_multi]))
   res1 = cursor.fetchall()
   res1_df = pd.DataFrame(res1, columns=["Gene", "Variant", "Drug", "Phenotypes", "EvidenceLevel", "EvidenceScore", "PhenotypeCategoryID", "Alleles", "Annotation", "Function", "URL", "Pediatric", "GeneID", "DrugID"])

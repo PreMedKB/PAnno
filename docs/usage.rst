@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use CPAT in a project::
+To use PAnno in a project::
 
-    import cpat
+    import panno

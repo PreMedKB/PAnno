@@ -1,23 +1,23 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-"""Console script for cpat."""
+"""Console script for panno."""
 
-from cpat import genotype_resolution, clinical_annotation, pgx_report
+from panno import genotype_resolution, clinical_annotation, pgx_report
 import getopt, sys, os
 
 def main():
   
   version = '0.1.0'
   help = '''
-  Usage: python cpat.py [OPTIONS]
+  Usage: python panno.py [OPTIONS]
   
-  CPAT takes the variant calling format (VCF) file and population information as input
+  PAnno takes the variant calling format (VCF) file and population information as input
   and outputs an HTML report of drug responses with prescription recommendations.
   
   Options:
     
-    -s, --sample_id                 Sample ID that will be displayed in the CPAT report.
+    -s, --sample_id                 Sample ID that will be displayed in the PAnno report.
     
     -i, --germline_vcf              Unannotated VCF file, preferably germline variant.
     
@@ -62,7 +62,7 @@ def main():
 
     # Check input data
     if population not in pop_dic.keys():
-      print('The input population is not included in CPAT. Please check if the abbreviation is used correctly.')
+      print('The input population is not included in PAnno. Please check if the abbreviation is used correctly.')
       sys.exit(1)
     if not os.path.exists(germline_vcf):
       print('The input germline VCF file does not exist.')
@@ -73,17 +73,17 @@ def main():
       print('{0} does not exist and is trying to create it.'.format(outdir))
       os.makedir(outdir)
     
-    # Start running CPAT
+    # Start running PAnno
     print('  - Parsing PGx related genotypes ...')
     dic_diplotype, dic_rs2gt, hla_subtypes = genotype_resolution.resolution(pop_dic[population], germline_vcf)
     print('  - Annotating clinical information ...')
     pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
-    print('  - Generating CPAT report ...')
-    fp = "%s/%s.cpat.html" % (outdir, sample_id)
+    print('  - Generating PAnno report ...')
+    fp = "%s/%s.panno.html" % (outdir, sample_id)
     pgx_report.report(pop_dic[population], pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
     
     # Finish the task
-    print('  Your CPAT report has been completed and is located at %s.' % fp)
+    print('  Your PAnno report has been completed and is located at %s.' % fp)
     print('\n    ^ _ ^')
   
   except:

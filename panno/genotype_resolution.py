@@ -2,15 +2,15 @@
 # -*- coding: UTF-8 -*-
 
 
-from cpat import predict_diplotype
+from panno import predict_diplotype
 import re, os
 import pandas as pd
 from pybedtools import BedTool
 
 def resolution(race, germline_vcf):
   
-  cpat_bed_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat.hla.bed')
-  ## Filter loci based on PharmGKB's bed file: delete all loci in the user's vcf that are not in the cpat.bed file
+  panno_bed_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_loci.bed')
+  ## Filter loci based on PharmGKB's bed file: delete all loci in the user's vcf that are not in the panno.bed file
   ## Extract the user's bed file: skip the lines starting with '##'
   vcf = []
   vcf_bed = []
@@ -24,11 +24,11 @@ def resolution(race, germline_vcf):
         vcf_bed.append([info[0], info[1], info[1]])
   
   vcf_bed_df = pd.DataFrame(vcf_bed, columns=['chrom', 'start', 'end'])
-  cpat_bed = pd.read_csv(cpat_bed_fp, sep="\t", names=['chrom', 'start', 'end', 'rsid'])
+  panno_bed = pd.read_csv(panno_bed_fp, sep="\t", names=['chrom', 'start', 'end', 'rsid'])
   # Replace chr
   vcf_bed_df['chrom'] = vcf_bed_df['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
-  cpat_bed['chrom'] = cpat_bed['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
-  filter_bed = BedTool.from_dataframe(vcf_bed_df).intersect(BedTool.from_dataframe(cpat_bed.iloc[:,0:3])).to_dataframe().drop_duplicates()
+  panno_bed['chrom'] = panno_bed['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
+  filter_bed = BedTool.from_dataframe(vcf_bed_df).intersect(BedTool.from_dataframe(panno_bed.iloc[:,0:3])).to_dataframe().drop_duplicates()
   
   ## Save the user_vcf to a vcf file for the diplotype function to call
   vcf_df = pd.DataFrame(vcf, columns=colnames)
@@ -47,8 +47,8 @@ def resolution(race, germline_vcf):
   ## Class 3: Genotypes of detected positions
   dic_rs2gt = {}
   format_index = colnames.index("FORMAT")
-  # Reload cpat_bed
-  cpat_bed_rsid = cpat_bed.dropna()
+  # Reload panno_bed
+  panno_bed_rsid = panno_bed.dropna()
   for index, row in filtered_vcf.iterrows():
     info = row.to_list()
     format = info[format_index].split(":")
@@ -63,10 +63,10 @@ def resolution(race, germline_vcf):
     if row[0].startswith('HLA') and genotype != 0:
       hla_subtypes.append(row[0])
     # If the variant was within the clinical relevant list, add it into dis_rs2gt
-    tmp = cpat_bed_rsid[(cpat_bed_rsid.chrom == info[0]) & (cpat_bed_rsid.start == info[1])].rsid.to_list()
+    tmp = panno_bed_rsid[(panno_bed_rsid.chrom == info[0]) & (panno_bed_rsid.start == info[1])].rsid.to_list()
     if tmp != []:
       rsids = tmp
-    elif info[2] in cpat_bed_rsid.rsid.to_list(): # The chromosome positions of a rsID may not complete.
+    elif info[2] in panno_bed_rsid.rsid.to_list(): # The chromosome positions of a rsID may not complete.
       rsids = [info[2]]
     else:
       rsids = None

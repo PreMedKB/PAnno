@@ -246,12 +246,12 @@ def predict_diplotype(vcf_alleles, info, race):
 
 
 def predict(vcf_df, race, gene_list):
-  cpat_dip_fp = os.path.join(os.path.dirname(__file__), 'assets/cpat_dip_base.json')
-  cpat_dip_base = json.loads(open(cpat_dip_fp).read())
+  panno_dip_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_diplotypes.json')
+  panno_dip_base = json.loads(open(panno_dip_fp).read())
   dic_diplotype = {}
   dic_diplotype_detail = {}
   for gene in gene_list:
-    info = cpat_dip_base[gene]
+    info = panno_dip_base[gene]
     hap_define_display = info['haplotype_definition_display']
     vcf_alleles, vcf_alleles_display = parse_input_allele(vcf_df, info)
     exact_match_res, rank_step1_res, final_rank_res = predict_diplotype(vcf_alleles, info, race)

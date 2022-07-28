@@ -25,5 +25,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: PreMedKB/cpat
+    repo: PreMedKB/PAnno
     python: 3.8

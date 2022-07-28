@@ -1,4 +1,4 @@
-Welcome to CPAT's documentation!
+Welcome to PAnno's documentation!
 ======================================
 
 .. toctree::

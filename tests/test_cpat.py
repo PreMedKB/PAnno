@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 
-"""Tests for `cpat` package."""
+"""Tests for `panno` package."""
 
 
 import unittest
 
-from cpat import cpat
+from premedkb_panno import panno
 
 
 class TestCpat(unittest.TestCase):
-    """Tests for `cpat` package."""
+    """Tests for `premedkb_panno` package."""
 
     def setUp(self):
         """Set up test fixtures, if any."""
