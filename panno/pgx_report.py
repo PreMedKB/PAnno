@@ -177,9 +177,9 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     header = header + '\n</table>'
     print(header, file=f)
     
-    # Part 4: Disclaimers
+    # Part 4: About
     disclaimer = """
-    <h2 id="about"><b>Disclaimers</b></h2>
+    <h2 id="about"><b>About</b></h2>
     <p class="main_lead">
       The report incorporates analyses of peer-reviewed studies and other publicly available information identified by PAnno by State Key Laboratory of Genetic Engineering from the School of Life Sciences and Human Phenome Institute, Fudan University, Shanghai, China. These analyses and information may include associations between a molecular alteration (or lack of alteration) and one or more drugs with potential clinical benefit (or potential lack of clinical benefit), including drug candidates that are being studied in clinical research.<br>
       <em>Note:</em> A finding of biomarker alteration does not necessarily indicate pharmacologic effectiveness (or lack thereof) of any drug or treatment regimen; a finding of no biomarker alteration does not necessarily indicate lack of pharmacologic effectiveness (or effectiveness) of any drug or treatment regimen.<br>
