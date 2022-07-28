@@ -40,14 +40,14 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
             <small class="hidden-xs">%s</small>
           </a>
         </h1>
-          <li><a href="#summary" class="nav-l1"><b>&nbsp;PGx Summary</b></a></li>
+          <li><a href="#pgx summary" class="nav-l1"><b>&nbsp;PGx Summary</b></a></li>
           <li><a href="#toxicity" class="nav-l2">&nbsp;&nbsp;Toxicity</a></li>
           <li><a href="#dosage" class="nav-l2">&nbsp;&nbsp;Dosage</a></li>
           <li><a href="#efficacy" class="nav-l2">&nbsp;&nbsp;Efficacy</a></li>
           <li><a href="#metabolism/pk" class="nav-l2">&nbsp;&nbsp;Metabolism/PK</a></li>
-          <li><a href="#guideline" class="nav-l1"><b>&nbsp;Dosing Guideline</b></a></li>
-          <li><a href="#diplotype" class="nav-l1"><b>&nbsp;Diplotype Detail</b></a></li>
-          <li><a href="#annotation" class="nav-l1"><b>&nbsp;PGx Annotation</b></a></li>
+          <li><a href="#dosing guideline" class="nav-l1"><b>&nbsp;Dosing Guideline</b></a></li>
+          <li><a href="#diplotype detail" class="nav-l1"><b>&nbsp;Diplotype Detail</b></a></li>
+          <li><a href="#pgx annotation" class="nav-l1"><b>&nbsp;PGx Annotation</b></a></li>
           <li><a href="#about" class="nav-l1"><b>&nbsp;About</b></a></li>
         </ul>
       </div>
@@ -83,7 +83,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
 
     ## Part 2: Pharmacogenomics Annotation
     part2_header = """
-    <h2 id="summary"><b>PGx Summary</b></h2>
+    <h2 id="pgx summary"><b>PGx Summary</b></h2>
     <p class="main_lead">PAnno combines genotypes with PharmGKB's clinical annotations to summarise a patient's response to a specific drug across four dimensions, including <font color="#444"><b>toxicity</b></font>, <font color="#444"><b>dosage</b></font>, <font color="#444"><b>efficacy</b></font>, <font color="#444"><b>metabolism/PK</b></font>. Response levels are indicated using <font color="#8E529A"><b>decreased</b></font>, <font color="#653F92"><b>moderate</b></font> and <font color="#44308d"><b>increased</b></font>. Results with variant-specific prescribing guidance in professional clinical guidelines or FDA-approved drug label annotations will be labeled as <font color="#54A052"><b>Level A</b></font>, otherwise as <font color="#3978B1"><b>Level B</b></font>.</p>
     """
     print(part2_header, file=f)
@@ -135,7 +135,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
                           html_input[3], html_input[4], html_input[5]), file=f)
       
     ## Part 3: Dosing Guideline
-    print('<h2 id="guideline"><b>Dosing Guideline</b></h2>', file=f)
+    print('<h2 id="dosing guideline"><b>Dosing Guideline</b></h2>', file=f)
     print('<p class="main_lead">PAnno integrates brief annotations of genotype-based dosing recommendations after PharmGKB processing. Original PGx-based drug dosing guidelines include the <a href="http://cpicpgx.org/">Clinical Pharmacogenetics Implementation Consortium</a> (CPIC), the <a href="https://www.knmp.nl/dossiers/farmacogenetica/">Royal Dutch Association for the Advancement of Pharmacy - Pharmacogenetics Working Group</a> (DPWG), the <a href="https://cpnds.ubc.ca/">Canadian Pharmacogenomics Network for Drug Safety</a> (CPNDS), the French National Network for Pharmacogenetics (RNPGx), The Australian and New Zealand consensus guidelines (AusNZ), the Spanish Pharmacogenetics and Pharmacogenomics Society (SEFF), the Cystic Fibrosis Foundation (CFF), the American College of Rheumatology.</p>', file=f)
     # Drug - Detected variant or alleles - Dosing guidelines
     for drug in list(dosing_guideline_table.Drug.drop_duplicates()):
@@ -155,7 +155,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
             print('<div class="alert alert-info-blue"><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i><b> %s: </b>%s</div>' % (row.DosingURL, row.DosingSource, row.DosingAnnotation), file=f)
     
     ## Part 4: Diplotype Detail
-    print('<h2 id="diplotype"><b>Diplotype Detail</b></h2>', file=f)
+    print('<h2 id="diplotype detail"><b>Diplotype Detail</b></h2>', file=f)
     print('<p class="main_lead">PAnno predicts the diplotypes for PGx genes with star (*) or named allele information, which include ABCG2, CACNA1S, CFTR, CYP2B6, CYP2C8, CYP2C9, CYP2C19, CYP3A4, CYP3A5, CYP4F2, DPYD, G6PD, MT-NR1, NUDT15, RYR1, SLCO1B1, TPMT, UGT1A1, and VKORC1. PAnno assumes that no variation occurs for the missing positions in the submitted VCFs, and the final inferred diplotypes are a composite ranking result.</p>', file=f)
     for gene in list(dic_diplotype.keys()):
       print('<h3><b>%s: %s</b></h3>' % (gene, dic_diplotype[gene]['step2_res']), file=f)
@@ -168,7 +168,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       print(header, file=f)
     
     ## Part 5: PGx Annotation
-    print('<h2 id="annotation"><b>PGx Annotation</b></h2>', file=f)
+    print('<h2 id="pgx annotation"><b>PGx Annotation</b></h2>', file=f)
     print('<p class="main_lead">PAnno annotates PGx-related single-locus genotypes and predicted diplotypes using the knowledge from PharmGKB, which are the basis for calculating the PGx summary results.</p>', file=f)
     detail = clinical_anno_table.drop(columns=['Class']).reset_index(drop = True)
     header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th width="60px"></th><th>Gene</th><th>Variant</th><th>Alleles</th><th>Drug</th><th>Evidence</th><th>Category</th><th>Function</th></tr>'

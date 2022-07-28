@@ -404,8 +404,8 @@ li a:hover:not(.active) {
   border-top: 0.8px solid #ccc;
   font-size: 0.9rem;
   color: #999;
-  margin-left: 10rem;
-  margin-right: -3rem;
+  margin-left: 11rem;
+  margin-right: 0rem;
   padding: 1px 1px;
 }
 .footer p {
