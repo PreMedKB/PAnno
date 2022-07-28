@@ -23,24 +23,10 @@ requirements:
   
   run:
     - python {{ python }}
-    - Jinja2 ~=2.11
-    - markupsafe ~=2.0.1
-    - PyYAML ~=6.0
-    - toml ~=0.10
-    - verboselogs ~=1.7
-    - psutil ~=5.9
-    - coloredlogs ~=15.0
-    - argcomplete ~=2.0
-    - jsonschema ~=4.5
-    - pyparsing ~=3.0
-    - requests ~=2.27
-    - Markdown ~=3.3
-    - sqlalchemy ~=1.4
-    - mkdocs ~=1.2
-    - mkdocs-material ~=8.2
-    - mkdocs-material-extensions ~=1.0
-    - pygments ~=2.12
-    - pymdown-extensions ~=9.4
+    - pandas >= 1.3.2
+    - numpy >= 1.19.5
+    - pybedtools >= 0.9.0
+
 
 test:
   commands:
@@ -48,13 +34,14 @@ test:
   imports:
     - panno
 
+
 about:
   home: {{ data.url }}
-  license: MIT
+  license: MPL
   license_file: LICENSE
-  license_family: MIT
-
+  license_family: MPL
+  
   summary: {{ data.description }}
-  description: Panno is a fast, simple and downright gorgeous interactive report generator that's geared towards building scientific report. Report source files are written in Markdown, and configured with a single TOML configuration file.
-  doc_url: https://biovis.report
+  description: PAnno reports drug responses and prescribing recommendations by parsing the germline variant call format (VCF) file from NGS and the population to which the individual belongs. PAnno provides an end-to-end clinical pharmacogenomics decision support solution by resolving, annotating, and reporting germline variants in individuals.
+  doc_url: {{ data.url }}
   dev_url: {{ data.url }}
