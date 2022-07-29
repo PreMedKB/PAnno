@@ -31,6 +31,8 @@ conda install -c lyaqing panno
 If you would like the development version instead, the command is:
 ```Shell
 pip install --upgrade --force-reinstall git+https://github.com/PreMedKB/PAnno.git
+# Or download first and install later
+git clone https://github.com/PreMedKB/PAnno.git; pip install PAnno
 ```
 
 ## Usage
