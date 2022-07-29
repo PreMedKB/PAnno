@@ -115,4 +115,4 @@ ehthumbs.db
 Thumbs.db
 
 # Conda converted packages
-allplatform/*
+conda.packages/*
