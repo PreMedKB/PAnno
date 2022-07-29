@@ -65,7 +65,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       </a>
     </h1>
     <p class="head_lead">
-      An automated Clinical Pharmacogenomics Annotation Tool to report drug responses and prescribing recommendations by parsing the germline variants.
+      A clinical pharmacogenomics annotation tool to report drug responses and prescribing recommendations by parsing the germline variants.
     </p>
     <blockquote>
       <p>Sample ID: %s<br>Biogeographic Group: %s<br>Report Time: %s</p>
@@ -136,7 +136,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       
     ## Part 3: Dosing Guideline
     print('<h2 id="dosing guideline"><b>Dosing Guideline</b></h2>', file=f)
-    print('<p class="main_lead">PAnno integrates brief annotations of genotype-based dosing recommendations after PharmGKB processing. Original PGx-based drug dosing guidelines include the <a href="http://cpicpgx.org/">Clinical Pharmacogenetics Implementation Consortium</a> (CPIC), the <a href="https://www.knmp.nl/dossiers/farmacogenetica/">Dutch Pharmacogenetics Working Group</a> (DPWG), the <a href="https://cpnds.ubc.ca/">Canadian Pharmacogenomics Network for Drug Safety</a> (CPNDS), the French National Network for Pharmacogenetics (RNPGx), The Australian and New Zealand consensus guidelines (AusNZ), the Spanish Pharmacogenetics and Pharmacogenomics Society (SEFF), the Cystic Fibrosis Foundation (CFF), and the American College of Rheumatology.</p>', file=f)
+    print('<p class="main_lead">PAnno integrates brief guidelines of genotype-based dosing recommendations on a drug-by-drug basis. Original prescribing information was collected by PharmGKB, primarily from the <a href="http://cpicpgx.org/">Clinical Pharmacogenetics Implementation Consortium</a> (CPIC), the <a href="https://www.knmp.nl/dossiers/farmacogenetica/">Dutch Pharmacogenetics Working Group</a> (DPWG), the <a href="https://cpnds.ubc.ca/">Canadian Pharmacogenomics Network for Drug Safety</a> (CPNDS), the French National Network of Pharmacogenetics (RNPGx).</p>', file=f)
     # Drug - Detected variant or alleles - Dosing guidelines
     for drug in list(dosing_guideline_table.Drug.drop_duplicates()):
       print('<h3><b>%s</b></h3>' % drug, file=f)
@@ -169,7 +169,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     
     ## Part 5: PGx Annotation
     print('<h2 id="pgx annotation"><b>PGx Annotation</b></h2>', file=f)
-    print('<p class="main_lead">PAnno annotates PGx-related single-locus genotypes and predicted diplotypes using the knowledge from PharmGKB, which are the basis for calculating the PGx summary results.</p>', file=f)
+    print('<p class="main_lead">PAnno annotates PGx-related single-locus genotypes and predicted diplotypes using the knowledge from PharmGKB, which is the basis for predicting the individual drug response in the PGx summary.</p>', file=f)
     detail = clinical_anno_table.drop(columns=['Class']).reset_index(drop = True)
     header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th width="60px"></th><th>Gene</th><th>Variant</th><th>Alleles</th><th>Drug</th><th>Evidence</th><th>Category</th><th>Function</th></tr>'
     for index, row in detail.iterrows():
