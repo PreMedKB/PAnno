@@ -57,18 +57,8 @@
   }
 }
 
-/* Normalize.css */
-a {
-  background-color: transparent; /* Remove the gray background on active links in IE 10. */
-}
-img {
-  border-style: none; /*  Remove the border on images inside links in IE 10. */
-}
-
 html {
   font-size: 12px;
-  line-height: 1.15; /* Correct the line height in all browsers */
-  -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. */
 }
 
 @media screen and (min-width: 32rem) and (max-width: 48rem) {
@@ -83,43 +73,58 @@ html {
   }
 }
 
-p {
+p,
+.air-p {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
 
-h1, h2, h3, h4 {
+h1,
+.air-h1,
+h2,
+.air-h2,
+h3,
+.air-h3,
+h4,
+.air-h4 {
   margin: 1.414rem 0 0.5rem;
   font-weight: inherit;
 }
 
-h1 {
+h1,
+.air-h1 {
   margin-top: 3rem;
   font-size: 1.6rem;
 }
 
-h2 {
+h2,
+.air-h2 {
   font-size: 1.5rem;
   margin-bottom: -5px;
 }
 
-h3 {
+h3,
+.air-h3 {
   font-size: 1.3rem;
 }
 
-h4 {
+h4,
+.air-h4 {
   font-size: 1rem;
 }
 
-h5 {
+h5,
+.air-h5 {
   font-size: 0.8rem;
 }
 
-h6 {
+h6,
+.air-h6 {
   font-size: 0.7rem;
 }
 
-small {
+small,
+.air-small {
   font-size: 0.6em;
 }
 
@@ -137,9 +142,9 @@ textarea {
 
 
 body {
-  margin: 0;
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
   width: 97.5%;
   text-align: left;
   line-height: 1.5;
@@ -168,8 +173,6 @@ blockquote {
   font-size: 0.95rem;
   font-style: italic;
   text-align: left;
-  padding: 0px 12px;
-  border-left: 5px solid #eee;
 }
 
 ul,
@@ -378,7 +381,7 @@ li a:hover:not(.active) {
   margin: 20px 0px -10px;
 }
 #page_title img {
-  width: 300px;
+  width: 350px;
 }
 
 /* lead description */

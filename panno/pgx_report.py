@@ -2,27 +2,31 @@
 # -*- coding: UTF-8 -*-
 
 
-import time, os
+import time, os, base64
+
 
 def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id):
 
   with open(fp, 'w+') as f:
     
     ## Style
-    # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
-    css_fp = 'https://raw.githack.com/premedkb/panno/main/panno/assets/custom.css'
-    logo_fp = 'https://raw.githubusercontent.com/premedkb/panno/main/docs/images/panno_logo.png'
-    icon_fp = 'https://raw.githubusercontent.com/premedkb/panno/main/docs/images/panno_icon.png'
+    css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+    logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
+    icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
+    logo_base64 = base64.b64encode(open(logo_fp, "rb").read()).decode()
+    icon_base64 = base64.b64encode(open(icon_fp, "rb").read()).decode()
     
     head_nav="""
     <!doctype html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>PAnno Report</title>
-      <link rel="shortcut icon" href="%s">
+      <link rel="shortcut icon" href="data:image/png;base64,%s">
       <script src="https://kit.fontawesome.com/e540049a97.js" crossorigin="anonymous"></script>
-      <link rel="stylesheet" type="text/css" href="%s">
+      <style type="text/css">%s</style>
     </head>
     
     <body>
@@ -31,7 +35,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
         <ul class="mqc-nav collapse navbar-collapse">
         <h1>
           <a href="#">
-            <img src="%s" alt="PAnno">
+            <img src="data:image/png;base64,%s" alt="PAnno">
             <br class="hidden-xs">
             <small class="hidden-xs">%s</small>
           </a>
@@ -51,13 +55,13 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     
     <div class="main_page">
     """
-    print(head_nav%(icon_fp, css_fp, icon_fp, 'v0.2.0'), file=f)
+    print(head_nav%(icon_base64, open(css_fp).read(), icon_base64, 'v0.2.0'), file=f)
    
     ## Part 0: Basic information
     basic_info = """
     <h1 id="page_title">
       <a href="https://github.com/PreMedKB/PAnno" target="_blank">
-        <img src="%s" alt="PAnno">
+        <img src="data:image/png;base64,%s" title="PAnno">
       </a>
     </h1>
     <p class="head_lead">
@@ -67,7 +71,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       <p style="font-size:0.95rem;">Sample ID: %s<br>Biogeographic Group: %s<br>Report Time: %s</p>
     </blockquote>
     """
-    print(basic_info%(logo_fp, sample_id, race, time.asctime(time.localtime(time.time()))), file=f)
+    print(basic_info%(logo_base64, sample_id, race, time.asctime(time.localtime(time.time()))), file=f)
     
     ## Part 1: Sort disclaimer
     disclaimer_short = """
