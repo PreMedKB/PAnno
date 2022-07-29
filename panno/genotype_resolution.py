@@ -32,6 +32,9 @@ def resolution(race, germline_vcf):
   # Replace chr
   vcf_bed_df['chrom'] = vcf_bed_df['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
   panno_bed['chrom'] = panno_bed['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
+  # Recheck the data type
+  vcf_bed_df[['start', 'end']] = vcf_bed_df[['start', 'end']].astype('int64')
+  panno_bed[['start', 'end']] = panno_bed[['start', 'end']].astype('int64')
   print('\nFilter BED with BedTool...')
   filter_bed = BedTool.from_dataframe(vcf_bed_df).intersect(BedTool.from_dataframe(panno_bed.iloc[:,0:3])).to_dataframe().drop_duplicates()
   
