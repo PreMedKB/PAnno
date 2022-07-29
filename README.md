@@ -1,6 +1,6 @@
 <p align="left" margin-bottom="-2rem"> <img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/panno_logo.png" width="40%"/> </p>
 
-## PAnno: **P**harmacogenomics **Anno**tation Tool
+## PAnno: A Pharmacogenomics Annotation Tool for Clinical Genomic Testing
 
 ![PyPI](https://img.shields.io/pypi/v/panno?color=pink)  ![Conda](https://img.shields.io/conda/v/lyaqing/panno?color=blue&label=conda) ![AppVeyor](https://img.shields.io/appveyor/build/PreMedKB/PAnno)
 
