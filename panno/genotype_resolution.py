@@ -24,24 +24,31 @@ def resolution(race, germline_vcf):
         vcf_bed.append([info[0], info[1], info[1]])
   
   vcf_bed_df = pd.DataFrame(vcf_bed, columns=['chrom', 'start', 'end'])
+  print('\nPrint input VCF.')
+  print(vcf_bed_df.head())
   panno_bed = pd.read_csv(panno_bed_fp, sep="\t", names=['chrom', 'start', 'end', 'rsid'])
+  print('\nPrint PAnno BED.')
+  print(panno_bed.head())
   # Replace chr
   vcf_bed_df['chrom'] = vcf_bed_df['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
   panno_bed['chrom'] = panno_bed['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
   filter_bed = BedTool.from_dataframe(vcf_bed_df).intersect(BedTool.from_dataframe(panno_bed.iloc[:,0:3])).to_dataframe().drop_duplicates()
-  
+
   ## Save the user_vcf to a vcf file for the diplotype function to call
   vcf_df = pd.DataFrame(vcf, columns=colnames)
   vcf_df.loc[:,'#CHROM'] = vcf_df['#CHROM'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
   vcf_df.loc[:,colnames[1]] = vcf_df[colnames[1]].astype('int64')
   filter_bed = filter_bed.iloc[:, 0:2].rename(columns={'chrom': colnames[0], 'start': colnames[1]})
   filtered_vcf = pd.merge(vcf_df, filter_bed, how='inner', on=colnames[:2])
+  print('\nPrint filtered VCF.')
+  print(filtered_vcf.head())
   
   ## Class 1: Diplotype
   gene_list = ["ABCG2", "CACNA1S", "CFTR", "CYP2B6", "CYP2C8", "CYP2C9", "CYP2C19", "CYP2D6",\
               "CYP3A4", "CYP3A5", "CYP4F2", "DPYD", "G6PD", "MT-RNR1", "NUDT15", "IFNL3", \
               "RYR1", "SLCO1B1", "TPMT", "UGT1A1", "VKORC1"]
   dic_diplotype = predict_diplotype.predict(filtered_vcf, race, gene_list)
+  print('\nFinished diplotype predicting.')
   ## Class 2: HLA genes
   hla_subtypes = []
   ## Class 3: Genotypes of detected positions
@@ -80,5 +87,6 @@ def resolution(race, germline_vcf):
         var.append(alleles[int(g)])
       for rsid in rsids:
         dic_rs2gt[rsid] = tuple(var)
+  print('\nFinished single-locus extracting.')
   
   return(dic_diplotype, dic_rs2gt, set(hla_subtypes))
