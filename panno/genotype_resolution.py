@@ -32,10 +32,12 @@ def resolution(race, germline_vcf):
   # Replace chr
   vcf_bed_df['chrom'] = vcf_bed_df['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
   panno_bed['chrom'] = panno_bed['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
+  print('\nFilter BED with BedTool...')
   filter_bed = BedTool.from_dataframe(vcf_bed_df).intersect(BedTool.from_dataframe(panno_bed.iloc[:,0:3])).to_dataframe().drop_duplicates()
-
+  
   ## Save the user_vcf to a vcf file for the diplotype function to call
   vcf_df = pd.DataFrame(vcf, columns=colnames)
+  print('\nRename CHROM of input VCF...')
   vcf_df.loc[:,'#CHROM'] = vcf_df['#CHROM'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
   vcf_df.loc[:,colnames[1]] = vcf_df[colnames[1]].astype('int64')
   filter_bed = filter_bed.iloc[:, 0:2].rename(columns={'chrom': colnames[0], 'start': colnames[1]})
