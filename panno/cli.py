@@ -68,10 +68,10 @@ def main():
       print('The input germline VCF file does not exist.')
       sys.exit(1)
     
-    if not os.path.isdir(outdir):
-      outdir = os.path.dirname(outdir)
+    # if not os.path.isdir(outdir):
+    #   outdir = os.path.dirname(outdir)
     if not os.path.exists(outdir):
-      print('{0} does not exist and is trying to create it.'.format(outdir))
+      print('The directory {0} does not exist. PAnno is trying to create it.'.format(outdir))
       os.makedir(outdir)
     
     # Start running PAnno
@@ -80,7 +80,7 @@ def main():
     print('  - Annotating clinical information ...')
     pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
     print('  - Generating PAnno report ...')
-    fp = "%s/%s.PAnno.html" % (outdir, sample_id)
+    fp = os.path.join(outdir, "%s.PAnno.html" % sample_id)
     pgx_report.report(pop_dic[population], pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
     
     # Finish the task

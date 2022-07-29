@@ -409,7 +409,7 @@ li a:hover:not(.active) {
   padding: 1px 1px;
 }
 .footer p {
-  margin-left: 3rem;
+  /* margin-left: 3rem; */
   padding: 1px 10px;
   font-size: 0.8rem;
   color: #999;
