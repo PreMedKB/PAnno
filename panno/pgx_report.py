@@ -5,15 +5,11 @@
 import time, os
 
 def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id):
-  
+
   with open(fp, 'w+') as f:
     
     ## Style
     # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
-    # bootstrap_css_fp = os.path.join(os.path.dirname(__file__), 'assets/bootstrap.min.css')
-    # jquery_css_fp = os.path.join(os.path.dirname(__file__), 'assets/jquery.toast.css')
-    # logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
-    # icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
     css_fp = 'https://raw.githack.com/premedkb/panno/main/panno/assets/custom.css'
     logo_fp = 'https://raw.githubusercontent.com/premedkb/panno/main/docs/images/panno_logo.png'
     icon_fp = 'https://raw.githubusercontent.com/premedkb/panno/main/docs/images/panno_icon.png'
@@ -68,7 +64,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       An automated clinical pharmacogenomics annotation tool to report drug responses and prescribing recommendations by parsing the germline variants.
     </p>
     <blockquote>
-      <p>Sample ID: %s<br>Biogeographic Group: %s<br>Report Time: %s</p>
+      <p style="font-size:0.95rem;">Sample ID: %s<br>Biogeographic Group: %s<br>Report Time: %s</p>
     </blockquote>
     """
     print(basic_info%(logo_fp, sample_id, race, time.asctime(time.localtime(time.time()))), file=f)

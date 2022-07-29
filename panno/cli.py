@@ -68,7 +68,7 @@ def main():
     print('\nThe germline VCF (-i or --germline_vcf) is a required parameter, please enter it.')
     sys.exit(1)
   elif not os.path.exists(germline_vcf):
-    print('\nThe input germline VCF file does not exist, please check your file path.')
+    print('\n[ERROR] The input germline VCF file does not exist, please check your file path.')
     sys.exit(1)
   
   if 'population' not in locals().keys():
@@ -92,8 +92,7 @@ def main():
     except:
       print('  - [ERROR] Directory creation failed. Please enter a directory that already exists to re-run PAnno.')
       sys.exit(1)
-  else:
-    fp = os.path.join(outdir, "%s.PAnno.html" % sample_id)
+  fp = os.path.join(outdir, "%s.PAnno.html" % sample_id)
   
   
   ## Start running PAnno
@@ -113,7 +112,7 @@ def main():
   
   try:
     print('Generating PAnno report ...')
-    race = '%s (%s)' % (pop_dic[population], population)
+    race = "%s (%s)" % (pop_dic[population], population)
     pgx_report.report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
   except:
     print('  - [ERROR] occurred during reporting!')
