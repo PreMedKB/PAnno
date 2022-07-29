@@ -114,4 +114,5 @@ ENV/
 ehthumbs.db
 Thumbs.db
 
-./allplatform/*
+# Conda converted packages
+allplatform/*

@@ -383,6 +383,7 @@ li a:hover:not(.active) {
   width: 350px;
 }
 
+/* lead description */
 .head_lead {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 10px;
@@ -398,7 +399,7 @@ li a:hover:not(.active) {
   line-height: 1.5;
 }
 
-
+/* footer */
 .footer {
   background-color: #f1f1f1;
   border-top: 0.8px solid #ccc;
@@ -409,7 +410,7 @@ li a:hover:not(.active) {
   padding: 1px 1px;
 }
 .footer p {
-  /* margin-left: 3rem; */
+  margin-left: 2rem; /* 2rem = width of main_page subtract nav */
   padding: 1px 10px;
   font-size: 0.8rem;
   color: #999;
