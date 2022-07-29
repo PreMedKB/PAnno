@@ -10,7 +10,7 @@ def main():
   
   version = '0.1.1'
   help = '''
-  Usage: python panno.py [OPTIONS]
+  Usage: panno -s sample_id -i germline_vcf -p population -o outdir
   
   PAnno takes the variant calling format (VCF) file and population information as input
   and outputs an HTML report of drug responses with prescription recommendations.
@@ -37,6 +37,9 @@ def main():
   
   try:
     opts, args = getopt.getopt(sys.argv[1:], "hvs:i:p:o:", ["help", "version", "sample_id=", "germline_vcf=", "population=", "outdir="])
+    if not opts:
+      print(help)
+      sys.exit()
   except getopt.GetoptError:
     print(help)
   
@@ -56,39 +59,69 @@ def main():
     elif opt in ("-o", "--output"):
       outdir = arg
   
-  try:
+  ## Check input arguments
+  if 'sample_id' not in locals().keys():
+    print('\nThe sample ID (-s or --sample_id) is a required parameter, please enter it.')
+    sys.exit(1)
+  
+  if 'germline_vcf' not in locals().keys():
+    print('\nThe germline VCF (-i or --germline_vcf) is a required parameter, please enter it.')
+    sys.exit(1)
+  elif not os.path.exists(germline_vcf):
+    print('\nThe input germline VCF file does not exist, please check your file path.')
+    sys.exit(1)
+  
+  if 'population' not in locals().keys():
+    print('\nThe population (-p or --population) is a required parameter, please enter it.')
+    sys.exit(1)
+  else:
     population = population.upper()
     pop_dic = {'AAC': 'African American/Afro-Caribbean', 'AME': 'American', 'SAS': 'Central/South Asian', 'EAS': 'East Asian', 'EUR': 'European', 'LAT': 'Latino', 'NEA': 'Near Eastern', 'OCE': 'Oceanian', 'SSA': 'Sub-Saharan African'}
-    
-    # Check input data
     if population not in pop_dic.keys():
-      print('The input population is not included in PAnno. Please check if the abbreviation is used correctly.')
+      print('\n[ERROR] The input population is not included in PAnno. Please check if the abbreviation is used correctly.')
       sys.exit(1)
-    if not os.path.exists(germline_vcf):
-      print('The input germline VCF file does not exist.')
-      sys.exit(1)
-    
-    # if not os.path.isdir(outdir):
-    #   outdir = os.path.dirname(outdir)
-    if not os.path.exists(outdir):
-      print('The directory {0} does not exist. PAnno is trying to create it.'.format(outdir))
-      os.makedir(outdir)
-    
-    # Start running PAnno
-    print('  - Parsing PGx related genotypes ...')
-    dic_diplotype, dic_rs2gt, hla_subtypes = genotype_resolution.resolution(pop_dic[population], germline_vcf)
-    print('  - Annotating clinical information ...')
-    pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
-    print('  - Generating PAnno report ...')
-    fp = os.path.join(outdir, "%s.PAnno.html" % sample_id)
-    pgx_report.report(pop_dic[population], pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
-    
-    # Finish the task
-    print('  Your PAnno report has been completed and is located at %s.' % fp)
-    print('\n    ^ _ ^\n\n')
   
+  if 'outdir' not in locals().keys():
+    print('\nThe directory for output (-o or --outdir) is a required parameter, please enter it.')
+    sys.exit(1)
+  elif not os.path.exists(outdir):
+    print('\n[WARNING] The directory %s does not exist.' % outdir)
+    try:
+      print('  - PAnno is trying to create it.')
+      os.mkdir(outdir)
+    except:
+      print('  - [ERROR] Directory creation failed. Please enter a directory that already exists to re-run PAnno.')
+      sys.exit(1)
+  else:
+    fp = os.path.join(outdir, "%s.PAnno.html" % sample_id)
+  
+  
+  ## Start running PAnno
+  try:
+    print('\nParsing PGx related genotypes ...')
+    dic_diplotype, dic_rs2gt, hla_subtypes = genotype_resolution.resolution(pop_dic[population], germline_vcf)
   except:
-    print('  ERROR occurred!')
+    print('  - [ERROR] occurred during genotype resolution!')
+    sys.exit(1)
+  
+  try:
+    print('Annotating clinical information ...')
+    pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
+  except:
+    print('  - [ERROR] occurred during clinical annotation!')
+    sys.exit(1)
+  
+  try:
+    print('Generating PAnno report ...')
+    race = '%s (%s)' % (pop_dic[population], population)
+    pgx_report.report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
+  except:
+    print('  - [ERROR] occurred during reporting!')
+    sys.exit(1)
+  
+  # Finish the task
+  print('\nYour PAnno report has been completed and is located at %s.' % fp)
+  print('\n     ^ _ ^\n\n')
 
 
 if __name__ == "__main__":
