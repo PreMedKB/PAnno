@@ -65,7 +65,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
       </a>
     </h1>
     <p class="head_lead">
-      A clinical pharmacogenomics annotation tool to report drug responses and prescribing recommendations by parsing the germline variants.
+      An automated clinical pharmacogenomics annotation tool to report drug responses and prescribing recommendations by parsing the germline variants.
     </p>
     <blockquote>
       <p>Sample ID: %s<br>Biogeographic Group: %s<br>Report Time: %s</p>
