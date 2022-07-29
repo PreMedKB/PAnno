@@ -91,7 +91,7 @@ Here is a snapshot from the PAnno report:
 ### PAnno ranking model for diplotype inference
 Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. PAnno processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the PAnno ranking model. The output diplotypes with the highest ranking will then be annotated.
 <p align="center">
-<img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/diplotype_inference.png" width="90%" />
+<img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/diplotype_inference.png" width="80%" />
 </p>
 
 ### PAnno annotation method for predicting drug response at individual level
