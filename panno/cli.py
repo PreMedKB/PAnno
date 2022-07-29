@@ -94,29 +94,16 @@ def main():
       sys.exit(1)
   fp = os.path.join(outdir, "%s.PAnno.html" % sample_id)
   
-  
+
   ## Start running PAnno
-  try:
-    print('\nParsing PGx related genotypes ...')
-    dic_diplotype, dic_rs2gt, hla_subtypes = genotype_resolution.resolution(pop_dic[population], germline_vcf)
-  except:
-    print('  - [ERROR] occurred during genotype resolution!')
-    sys.exit(1)
+  print('\nParsing PGx related genotypes ...')
+  dic_diplotype, dic_rs2gt, hla_subtypes = genotype_resolution.resolution(pop_dic[population], germline_vcf)
+  print('Annotating clinical information ...')
+  pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
+  print('Generating PAnno report ...')
+  race = "%s (%s)" % (pop_dic[population], population)
+  pgx_report.report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
   
-  try:
-    print('Annotating clinical information ...')
-    pgx_summary, clinical_anno_table, dosing_guideline_table = clinical_annotation.annotation(dic_diplotype, dic_rs2gt, hla_subtypes)
-  except:
-    print('  - [ERROR] occurred during clinical annotation!')
-    sys.exit(1)
-  
-  try:
-    print('Generating PAnno report ...')
-    race = "%s (%s)" % (pop_dic[population], population)
-    pgx_report.report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
-  except:
-    print('  - [ERROR] occurred during reporting!')
-    sys.exit(1)
   
   # Finish the task
   print('\nYour PAnno report has been completed and is located at %s.' % fp)

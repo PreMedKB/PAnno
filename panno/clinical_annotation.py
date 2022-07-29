@@ -5,7 +5,6 @@
 import sqlite3, os
 import pandas as pd
 import numpy as np
-from pybedtools import BedTool
 
 
 def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
