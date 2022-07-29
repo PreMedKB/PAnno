@@ -8,7 +8,7 @@ import getopt, sys, os
 
 def main():
   
-  version = '0.1.1'
+  version = '0.2.0'
   help = '''
   Usage: panno -s sample_id -i germline_vcf -p population -o outdir
   
@@ -104,7 +104,7 @@ def main():
   race = "%s (%s)" % (pop_dic[population], population)
   pgx_report.report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideline_table, fp, sample_id)
   
-  
+
   # Finish the task
   print('\nYour PAnno report has been completed and is located at %s.' % fp)
   print('\n     ^ _ ^\n\n')

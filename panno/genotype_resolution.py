@@ -3,9 +3,8 @@
 
 
 from panno import predict_diplotype
-import re, os
+import re, os, pyranges
 import pandas as pd
-from pybedtools import BedTool
 
 def resolution(race, germline_vcf):
   
@@ -23,18 +22,23 @@ def resolution(race, germline_vcf):
         vcf.append(info)
         vcf_bed.append([info[0], info[1], info[1]])
   
-  vcf_bed_df = pd.DataFrame(vcf_bed, columns=['chrom', 'start', 'end'])
-  panno_bed = pd.read_csv(panno_bed_fp, sep="\t", names=['chrom', 'start', 'end', 'rsid'])
-  # Replace chr
-  vcf_bed_df['chrom'] = vcf_bed_df['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
-  panno_bed['chrom'] = panno_bed['chrom'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
-  filter_bed = BedTool.from_dataframe(vcf_bed_df).intersect(BedTool.from_dataframe(panno_bed.iloc[:,0:3])).to_dataframe().drop_duplicates()
-  
-  ## Save the user_vcf to a vcf file for the diplotype function to call
+  vcf_bed_df = pd.DataFrame(vcf_bed, columns=['Chromosome', 'Start', 'End'])
+  panno_bed = pd.read_csv(panno_bed_fp, sep="\t", names=['Chromosome', 'Start', 'End', 'rsid'])
+  vcf_bed_df['Chromosome'] = vcf_bed_df['Chromosome'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
+  panno_bed['Chromosome'] = panno_bed['Chromosome'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
+
+  ## Filter the BED of the input VCF based on the overlap with PAnno BED
+  gr1, gr2 = pyranges.PyRanges(vcf_bed_df), pyranges.PyRanges(panno_bed.iloc[:,:3])
+  # pyranges will not process the item with equal start and end, which is different from pybedtools
+  gr1.End, gr2.End = gr1.End + 1, gr2.End + 1
+  filter_bed = gr1.overlap(gr2).df
+  filter_bed.End = filter_bed.End - 1
+
+  ## Convert the input VCF into a data frame and filter it
   vcf_df = pd.DataFrame(vcf, columns=colnames)
   vcf_df.loc[:,'#CHROM'] = vcf_df['#CHROM'].map(lambda x: re.sub('chr|Chr|CHR', '', x)).astype('str')
-  vcf_df.loc[:,colnames[1]] = vcf_df[colnames[1]].astype('int64')
-  filter_bed = filter_bed.iloc[:, 0:2].rename(columns={'chrom': colnames[0], 'start': colnames[1]})
+  vcf_df.loc[:,colnames[1]] = vcf_df[colnames[1]].astype('int32')
+  filter_bed = filter_bed.iloc[:, 0:2].rename(columns={'Chromosome': colnames[0], 'Start': colnames[1]})
   filtered_vcf = pd.merge(vcf_df, filter_bed, how='inner', on=colnames[:2])
   
   ## Class 1: Diplotype
@@ -63,10 +67,10 @@ def resolution(race, germline_vcf):
     if row[0].startswith('HLA') and genotype != 0:
       hla_subtypes.append(row[0])
     # If the variant was within the clinical relevant list, add it into dis_rs2gt
-    tmp = panno_bed_rsid[(panno_bed_rsid.chrom == info[0]) & (panno_bed_rsid.start == info[1])].rsid.to_list()
+    tmp = panno_bed_rsid[(panno_bed_rsid.Chromosome == info[0]) & (panno_bed_rsid.Start == info[1])].rsid.to_list()
     if tmp != []:
       rsids = tmp
-    elif info[2] in panno_bed_rsid.rsid.to_list(): # The chromosome positions of a rsID may not complete.
+    elif info[2] in panno_bed_rsid.rsid.to_list(): # The genome coordinates of a rsID may not complete.
       rsids = [info[2]]
     else:
       rsids = None

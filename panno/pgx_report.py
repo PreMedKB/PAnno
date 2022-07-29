@@ -51,7 +51,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     
     <div class="main_page">
     """
-    print(head_nav%(icon_fp, css_fp, icon_fp, 'v0.1.1'), file=f)
+    print(head_nav%(icon_fp, css_fp, icon_fp, 'v0.2.0'), file=f)
    
     ## Part 0: Basic information
     basic_info = """
@@ -188,7 +188,7 @@ def report(race, pgx_summary, dic_diplotype, clinical_anno_table, dosing_guideli
     <div class="footer">
       <p>
         <strong>
-          <a href="https://github.com/PreMedKB/PAnno" target="_blank">PAnno v0.1.1</a>
+          <a href="https://github.com/PreMedKB/PAnno" target="_blank">PAnno v0.2.0</a>
         </strong>
         - Written by Yaqing Liu, et al.,
         available at <a href="https://github.com/PreMedKB/PAnno" target="_blank">GitHub</a>, 

@@ -11,9 +11,9 @@ with open('README.md') as readme_file:
 with open('HISTORY.md') as history_file:
   history = history_file.read()
 
-requirements = ['pandas>=1.3.2', 'numpy>=1.19.5', 'pybedtools>=0.9.0']
+requirements = ['pandas>=1.3.2', 'numpy>=1.19.5', 'pyranges>=0.0.117']
 
-test_requirements = ['pandas>=1.3.2', 'numpy>=1.19.5', 'pybedtools>=0.9.0']
+test_requirements = ['pandas>=1.3.2', 'numpy>=1.19.5', 'pyranges>=0.0.117']
 
 setup(
     author="Yaqing Liu",
@@ -51,6 +51,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/PreMedKB/PAnno',
-    version='0.1.1',
+    version='0.2.0',
     zip_safe=False,
 )
