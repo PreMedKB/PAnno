@@ -5,20 +5,16 @@
 
 from setuptools import setup, find_packages
 
-with open('README.md') as readme_file:
-  readme = readme_file.read()
+readme = open('README.md').read()
+history = open('HISTORY.md').read()
 
-with open('HISTORY.md') as history_file:
-  history = history_file.read()
-
-requirements = ['pandas>=1.3.2', 'numpy>=1.19.5', 'pyranges>=0.0.117']
-
-test_requirements = ['pandas>=1.3.2', 'numpy>=1.19.5', 'pyranges>=0.0.117']
+requirements = ['pandas', 'numpy', 'pyranges']
+test_requirements = ['pandas', 'numpy', 'pyranges']
 
 setup(
     author="Yaqing Liu",
     author_email='yaqing.liu@outlook.com',
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         "Environment :: Console",
@@ -30,10 +26,10 @@ setup(
         "Operating System :: POSIX",
         "Operating System :: Unix",
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
     ],
     description="PAnno is a Pharmacogenomics Annotation tool for clinical genomic testing.",
     entry_points={
@@ -51,6 +47,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/PreMedKB/PAnno',
-    version='0.2.1',
+    version='0.2.2.dev1',
     zip_safe=False,
 )

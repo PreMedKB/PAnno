@@ -18,15 +18,11 @@ build:
 
 requirements:
   build:
-    - python ==3.8
+    - python
     - setuptools
   
   run:
-    - python ==3.8
-    - pandas >=1.3.2
-    - numpy >=1.19.5
-    - pyranges ==0.0.117
-
+    - python >=3.7
 
 test:
   commands:

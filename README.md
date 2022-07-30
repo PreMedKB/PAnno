@@ -18,6 +18,9 @@ An annotation method was further proposed to summarize ***the drug response leve
 PAnno is still under _active development_. In the current release, you should only use it to evaluate whether PAnno will compile and run properly on your system. All information in the PAnno report is interpreted directly from the uploaded VCF file. Users recognize that they are using PAnno at their own risk.
 
 ## Installation
+
+**Prerequisite: PAnno requires `Python >= 3.7` to be loaded in your environment in order for full functionality to work.**
+
 You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
 ```Shell
 pip install panno

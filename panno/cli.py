@@ -8,7 +8,7 @@ import getopt, sys, os
 
 def main():
   
-  version = '0.2.1'
+  version = '0.2.2.dev1'
   help = '''
   Usage: panno -s sample_id -i germline_vcf -p population -o outdir
   
