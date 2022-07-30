@@ -26,9 +26,9 @@ You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as 
 pip install panno
 ```
 
-Alternatively, you can install using [Anaconda](https://anaconda.org/lyaqing/panno):
+Alternatively, you can create a environment using [Conda](https://anaconda.org/lyaqing/panno):
 ```Shell
-conda install -c lyaqing panno
+conda create -n PAnno panno -c lyaqing -c conda-forge -c bioconda
 ```
 
 If you would like the development version instead, the command is:

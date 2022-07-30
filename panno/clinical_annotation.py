@@ -10,7 +10,7 @@ import numpy as np
 def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   
   ## Connected database
-  pgx_kb_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_kb.db')
+  pgx_kb_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_kb.sqlite3')
   conn = sqlite3.connect(pgx_kb_fp)
   cursor = conn.cursor()
   

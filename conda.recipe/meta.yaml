@@ -20,12 +20,12 @@ requirements:
   build:
     - python
     - setuptools
-  
   run:
     - python >=3.7
     - numpy
     - pandas
     - pyranges
+
 
 test:
   commands:
