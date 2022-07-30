@@ -23,6 +23,9 @@ requirements:
   
   run:
     - python >=3.7
+    - numpy
+    - pandas
+    - pyranges
 
 test:
   commands:

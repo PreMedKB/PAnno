@@ -19,7 +19,7 @@ PAnno is still under _active development_. In the current release, you should on
 
 ## Installation
 
-**Prerequisite: PAnno requires `Python >= 3.7` to be loaded in your environment in order for full functionality to work.**
+**Prerequisite: PAnno requires `Python >= 3.7` to be loaded in your environment for full functionality to work.**
 
 You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
 ```Shell
