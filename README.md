@@ -16,7 +16,7 @@ An annotation method was further proposed to summarize ***the drug response leve
 
 ## Installation
 
-**Prerequisite:** To ensure smooth installation and usage, [Python >= 3.7](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#1 and #3 below), or [Miniconda/Anaconda](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#2 below) are required.
+***Prerequisite:** To ensure smooth installation and usage, [Python >= 3.7](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#1 and #3 below), or [Miniconda/Anaconda](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#2 below) are required.*
 
 1. You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
 ```Shell
