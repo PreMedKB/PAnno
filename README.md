@@ -8,7 +8,7 @@ PAnno reports drug responses and prescribing recommendations by parsing the germ
 
 ## Installation
 
-***Prerequisite:** To ensure smooth installation and usage, [Python >= 3.7](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#1 and #3 below), or [Miniconda/Anaconda](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#2 below) are required.*
+***Prerequisite: To ensure smooth installation and usage, [Python >= 3.7](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#1 and #3 below), or [Miniconda/Anaconda](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#2 below) are required.***
 
 1. You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
 ```Shell
@@ -60,13 +60,11 @@ PAnno requires the VCF file aligned to the GRCh38 reference genome given the inc
 
 
 #### 2. Population
-There are nine biogeographic groups supported by PAnno:
+There are nine biogeographic groups supported by PAnno. Please use the ***three-letter abbreviation*** as input. This is to prevent errors caused by special symbols such as spaces.
 
 **AAC** (African American/Afro-Caribbean), **AME** (American), **EAS** (East Asian), **EUR** (European), **LAT** (Latino), **NEA** (Near Eastern), **OCE** (Oceanian), **SAS** (Central/South Asian), **SSA** (Sub-Saharan African).
 
 More information is available at https://www.pharmgkb.org/page/biogeographicalGroups.
-
-Please use the ***three-letter abbreviation*** as input. This is to prevent errors caused by special symbols such as spaces.
 
 ### Output data
 
@@ -93,8 +91,9 @@ PAnno provides an end-to-end clinical pharmacogenomics decision support solution
 </p>
 
 ### PAnno ranking model for diplotype inference
-Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. PAnno processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the PAnno ranking model. The output diplotypes with the highest ranking will then be annotated.
-A ranking model dedicated to inferring diplotype developed based on allele definitions and population allele frequencies was introduced in PAnno. The predictive performance for diplotype was validated in comparison with four similar tools using the consensus diplotype data of the Genetic Testing Reference Materials Coordination Program (GeT-RM) as ground truth.
+Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. PAnno processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the PAnno ranking model.
+
+The ranking model dedicated to inferring diplotype developed based on allele definitions and population allele frequencies was introduced in PAnno. The predictive performance for diplotype was validated in comparison with four similar tools using the consensus diplotype data of the Genetic Testing Reference Materials Coordination Program (GeT-RM) as ground truth.
 <p align="center">
 <img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/diplotype_inference.png" width="80%" />
 </p>
