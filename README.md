@@ -16,20 +16,20 @@ An annotation method was further proposed to summarize ***the drug response leve
 
 ## Installation
 
-**Prerequisite: PAnno requires `Python >= 3.7` to be loaded in your environment for full functionality to work.**
+**Prerequisite:** To ensure smooth installation and usage, [Python >= 3.7](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#1 and #3 below), or [Miniconda/Anaconda](https://docs.conda.io/en/latest/miniconda.html#system-requirements) (#2 below) are required.
 
-You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
+1. You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
 ```Shell
 pip install panno==0.2.3
 ```
 
-Alternatively, you can create a environment using [Conda](https://anaconda.org/lyaqing/panno):
+2. Alternatively, you can create a environment using [Conda](https://anaconda.org/lyaqing/panno).
 ```Shell
 conda create -n PAnno panno=0.2.3 -c lyaqing -c conda-forge -c bioconda
 conda activate PAnno
 ```
 
-If you would like the development version instead, the command is:
+3. If you would like the development version instead, the command is:
 ```Shell
 pip install --upgrade --force-reinstall git+https://github.com/PreMedKB/PAnno.git
 # Or download first and install later
