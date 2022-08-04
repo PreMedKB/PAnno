@@ -91,17 +91,14 @@ PAnno provides an end-to-end clinical pharmacogenomics decision support solution
 </p>
 
 ### PAnno ranking model for diplotype inference
-Genotype resolution aims to extract the alleles of small variants (SNVs and Indels) and the diplotypes related to PGx from the user-submitted VCF file. PAnno processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the PAnno ranking model.
+Genotype resolution aims to extract the alleles of ***small variants*** (SNVs and Indels) and the ***diplotypes*** related to PGx from the user-submitted VCF file. PAnno processes the “GT” information to obtain all relevant single-locus genotypes. Afterwards, the genotypes of small variants will be passed to clinical annotation directly, while the genotypes related to diplotype definitions will be passed to the following PAnno ranking model.
 
-The ranking model dedicated to inferring diplotype developed based on allele definitions and population allele frequencies was introduced in PAnno. The predictive performance for diplotype was validated in comparison with four similar tools using the consensus diplotype data of the Genetic Testing Reference Materials Coordination Program (GeT-RM) as ground truth.
 <p align="center">
 <img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/diplotype_inference.png" width="80%" />
 </p>
 
 ### PAnno annotation method for predicting drug response at individual level
-An annotation method was further proposed to summarize ***the drug response level*** (<b>decreased</b>, <b>moderate</b>, and <b>increased</b>) and ***the level of clinical evidence*** (<b>A</b> and <b>B</b>) for the resolved genotypes.
-
-PAnno annotation method translates the literal PGx knowledge about genotypes into quantitative scores. The association between multiple genotypes and a single drug is then further translated into an individual-level association with this drug. Then the individual responses to specific drugs are reported in terms of the strength of the response and the reliability of the evidence.
+PAnno annotation method translates the literal PGx knowledge about genotypes into quantitative scores. The association between multiple genotypes and a single drug is then further translated into an individual-level association with this drug. Then the individual responses to specific drugs are reported in terms of ***the drug response level*** (<b>decreased</b>, <b>moderate</b>, and <b>increased</b>) and ***the level of clinical evidence*** (<b>A</b> and <b>B</b>).
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/clinical_annotation.png" width="60%" />
