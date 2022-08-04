@@ -26,7 +26,7 @@ pip install panno==0.2.3
 Alternatively, you can create a environment using [Conda](https://anaconda.org/lyaqing/panno):
 ```Shell
 conda create -n PAnno panno=0.2.3 -c lyaqing -c conda-forge -c bioconda
-conda activate PAnno 
+conda activate PAnno
 ```
 
 If you would like the development version instead, the command is:
