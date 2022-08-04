@@ -14,9 +14,6 @@ An annotation method was further proposed to summarize ***the drug response leve
 <img src="https://raw.githubusercontent.com/premedkb/panno/main/docs/images/architecture.png" width="40%" />
 </p>
 
-## Status
-PAnno is still under _active development_. In the current release, you should only use it to evaluate whether PAnno will compile and run properly on your system. All information in the PAnno report is interpreted directly from the uploaded VCF file. Users recognize that they are using PAnno at their own risk.
-
 ## Installation
 
 **Prerequisite: PAnno requires `Python >= 3.7` to be loaded in your environment for full functionality to work.**
