@@ -41,7 +41,7 @@ setup(
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/markdown',
     include_package_data=True,
-    keywords=['pharmacology', 'drug responses', 'genomics', 'bioinformatics'],
+    keywords=['pharmacogenomics', 'pharmacology', 'drug responses', 'genomics', 'bioinformatics'],
     name='panno',
     packages=find_packages(include=['panno', 'panno.*']),
     test_suite='tests',

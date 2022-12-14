@@ -1,0 +1,10 @@
+include HISTORY.md
+include README.md
+include LICENSE
+
+recursive-include tests *
+recursive-include panno *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst *.md conf.py Makefile make.bat *.jpg *.png *.gif
