@@ -196,9 +196,9 @@ p {
 
 /* Main page */
 .main_page {
-  margin-left:13rem;
-  margin-right:0rem;
-  padding:1px 10px;
+  margin-left:15rem;
+  margin-right:1.2rem;
+  padding:1px;
 }
 
 /* Box */
@@ -263,7 +263,6 @@ p {
 }
 
 
-
 #drug_table {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
@@ -281,12 +280,13 @@ p {
 }
 #drug_table td:hover {background-color: #ddd;}
 
+
 /* Full-height Fixed Vertical Navbar */
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 11rem;
+  width: 11.5rem; /* width of the navbar */
   background-color: #f1f1f1;
   border-right: 0.8px solid #ccc;
   position: fixed;
@@ -315,8 +315,8 @@ li a:hover:not(.active) {
 }
 .side-nav h1 {
   font-size: 18px;
-  text-align: left;
-  margin:0;
+  text-align: center;
+  margin: 0;
   border-bottom: 1px solid #ccc;
 }
 .side-nav h1 a {
@@ -349,8 +349,8 @@ li a:hover:not(.active) {
 }
 .side-nav ul.mqc-nav, .side-nav ul.mqc-nav ul {
   height: 100%;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
   overflow: auto;
   position: fixed;
@@ -364,14 +364,15 @@ li a:hover:not(.active) {
   background-color: #dedede;
 }
 .side-nav .mqc-nav a.nav-l1 {
-  padding: 10px 4px 10px 6px;
+  /* top, right, bottom, left */
+  padding: 10px 0px 10px 0px;
   border-top: 1px solid #ccc;
 }
 .side-nav .mqc-nav li:first-child .nav-l1 {
   border-top: 0;
 }
 .side-nav .mqc-nav a.nav-l2 {
-  padding: 5px 10px 5px 15px;
+  padding: 5px 0px 5px 0px;
   border-top: 1px solid #dedede;
   font-size: 1.0em;
   color: #788fa4;
@@ -405,7 +406,7 @@ li a:hover:not(.active) {
   background-color: #ddd;
   border-color: #999;
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: 15px;
   margin: 0;
 }
@@ -447,13 +448,13 @@ li a:hover:not(.active) {
   border-top: 0.8px solid #ccc;
   font-size: 0.9rem;
   color: #999;
-  margin-left: 11rem;
-  margin-right: -3rem;
+  margin-left: 11.5rem; /* width of navbar(ul) */
+  margin-right: -2.2rem;
   padding: 1px 0px; /* 1px will ensure that the footer reaches the bottom of the page */
 }
 .footer p {
-  margin-left: 2rem; /* 2rem = width of main_page subtract nav */
-  padding: 1px 10px;
+  margin-left: 3.5rem; /* width of main_page (15rem) subtract navbar(ul) (11.5rem) */
+  padding: 1px;
   font-size: 0.8rem;
   color: #999;
 }
@@ -461,6 +462,7 @@ li a:hover:not(.active) {
   color: #999;
   text-decoration: underline;
 }
+
 /* summary */
 .sum-R{
   font-size: 1.2rem;
@@ -531,7 +533,7 @@ li a:hover:not(.active) {
       An automated clinical pharmacogenomics annotation tool to report drug responses and prescribing recommendations by parsing the germline variants.
     </p>
     <blockquote>
-      <p style="font-size:0.95rem;">Sample ID: NA19785<br>Biogeographic Group: Latino (LAT)<br>Report Time: Wed Dec 14 11:52:53 2022</p>
+      <p style="font-size:0.95rem;">Sample ID: NA19785<br>Biogeographic Group: Latino (LAT)<br>Report Time: Wed Dec 14 15:15:30 2022</p>
     </blockquote>
     
 
