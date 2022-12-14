@@ -34,7 +34,7 @@ setup(
     description="PAnno is a Pharmacogenomics Annotation tool for clinical genomic testing.",
     entry_points={
         'console_scripts': [
-            'panno=panno.cli:main',
+            'panno=panno.panno:main',
         ],
     },
     install_requires=requirements,
@@ -47,6 +47,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/PreMedKB/PAnno',
-    version='0.2.3',
+    version='0.3.0',
     zip_safe=False,
 )

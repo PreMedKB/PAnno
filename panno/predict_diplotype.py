@@ -6,12 +6,12 @@ import numpy as np
 import re, itertools, json, os
 
 
-def parse_input_allele(vcf_df, info):
+def parse_input_allele(filtered_vcf, info):
   hap_define = info['haplotype_definition']
   hap_define_display = info['haplotype_definition_display']
   ref_hap = info['reference_haplotype']
   
-  vcf_df_all = vcf_df.copy()
+  vcf_df_all = filtered_vcf.copy()
   vcf_df = vcf_df_all[vcf_df_all['#CHROM'] == info['chrom']]
   cols = vcf_df.columns.to_list()
   
@@ -143,10 +143,11 @@ def parse_input_allele(vcf_df, info):
       
       if is_wild_type == 1:
         vcf_alleles[source_pos] = (ref_hap_base, ref_hap_base)
-        vcf_alleles_display[source_pos] = ref_hap_base_display + '|' + ref_hap_base_display
+        vcf_alleles_display[source_pos] = ref_hap_base_display + '/' + ref_hap_base_display
       else:
         vcf_alleles[source_pos] = tuple_res
-        vcf_alleles_display[source_pos] = ';'.join(['|'.join(res) for res in list(zip(tuple_res_display[0], tuple_res_display[1]))])
+        # vcf_alleles_display[source_pos] = ';'.join(['|'.join(res) for res in list(zip(tuple_res_display[0], tuple_res_display[1]))])
+        vcf_alleles_display[source_pos] = tuple_res_display[0] + '/' + tuple_res_display[1]
         if None in tuple_res:
           print('Warning! None was reported.')
   
@@ -166,8 +167,12 @@ def parse_input_allele(vcf_df, info):
 
 def predict_diplotype(vcf_alleles, info, race):
   hap_define = info['haplotype_definition']
+  # CYP2C19 order
+  all_hap = list(hap_define.keys())
+  if all_hap[0] == '*38':
+    all_hap = ['*1', '*2', '*3', '*4', '*5', '*6', '*7', '*8', '*9', '*10', '*11', '*12', '*13', '*14', '*15', '*16', '*17', '*18', '*19', '*22', '*23', '*24', '*25', '*26', '*28', '*29', '*30', '*31', '*32', '*33', '*34', '*35', '*38', '*39']
   hap_mutated_loci = info['haplotype_mutated_loci']
-  diplotype_candidates = list(itertools.combinations_with_replacement(hap_define.keys(), 2))
+  diplotype_candidates = list(itertools.combinations_with_replacement(all_hap, 2))
   ### 1st Ranking by haplotype definition
   candidate = {}
   for dip in diplotype_candidates:
@@ -245,15 +250,16 @@ def predict_diplotype(vcf_alleles, info, race):
   return("; ".join(exact_match_res), "; ".join(rank_step1_res), "; ".join(final_rank_res))
 
 
-def predict(vcf_df, race, gene_list):
+def predict(filtered_vcf, race, gene_list):
   panno_dip_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_diplotypes.json')
+  # panno_dip_fp = "./panno/assets/pgx_diplotypes.json"
   panno_dip_base = json.loads(open(panno_dip_fp).read())
   dic_diplotype = {}
   dic_diplotype_detail = {}
   for gene in gene_list:
     info = panno_dip_base[gene]
     hap_define_display = info['haplotype_definition_display']
-    vcf_alleles, vcf_alleles_display = parse_input_allele(vcf_df, info)
+    vcf_alleles, vcf_alleles_display = parse_input_allele(filtered_vcf, info)
     exact_match_res, rank_step1_res, final_rank_res = predict_diplotype(vcf_alleles, info, race)
     
     if final_rank_res == '':
@@ -269,10 +275,20 @@ def predict(vcf_df, race, gene_list):
       detected_allele = vcf_alleles_display[source_pos]
       base_all = []
       for hap in haplotypes:
-        chrom, nc, pos, rs, pc, base = hap_define_display[hap][source_pos].split(':')
+        chrom, nc, ng, rs, pc, base = hap_define_display[hap][source_pos].split(':')
+        # position
+        matchobj = re.search(r'\w\.(\d+)\_(\d+)(del|ins)(\w*)', ng)
+        if matchobj:
+          pos = int(matchobj.group(1))
+        else:
+          matchobj = re.search(r'\w\.(\d+)(\w*)', ng)
+          if matchobj:
+            pos = matchobj.group(1)
+          else:
+            print(ng)
         base_all.append(hap + ':' + base)
       identified_allele = '; '.join(base_all)
-      diplotype_details.append((chrom, nc, pos, rs, pc, identified_allele, detected_allele))
+      diplotype_details.append((chrom, pos, nc, ng, rs, pc, identified_allele, detected_allele))
     
     # Collect the results
     dic_diplotype[gene] = {'exact_res': exact_match_res, 'step1_res': rank_step1_res, 'step2_res': final_rank_res, 'detail': diplotype_details}

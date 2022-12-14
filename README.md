@@ -12,12 +12,12 @@ PAnno reports drug responses and prescribing recommendations by parsing the germ
 
 1. You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
 ```Shell
-pip install panno==0.2.3
+pip install panno==0.3.0
 ```
 
 2. Alternatively, you can create a environment using [Conda](https://anaconda.org/lyaqing/panno).
 ```Shell
-conda create -n PAnno panno=0.2.3 -c lyaqing -c conda-forge -c bioconda
+conda create -n PAnno panno=0.3.0 -c lyaqing -c conda-forge -c bioconda
 conda activate PAnno
 ```
 

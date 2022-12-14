@@ -186,9 +186,9 @@ p {
 
 /* Main page */
 .main_page {
-  margin-left:13rem;
-  margin-right:0rem;
-  padding:1px 10px;
+  margin-left:15rem;
+  margin-right:1.2rem;
+  padding:1px;
 }
 
 /* Box */
@@ -236,13 +236,47 @@ p {
 #customer_table tr:nth-child(even){background-color: #f2f2f2;}
 #customer_table tr:hover {background-color: #ddd;}
 
+#atable {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout:fixed;
+  word-break:break-word;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+#atable td, #atable th {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 0.2em;
+}
+
+
+#drug_table {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout:fixed;
+  word-break:break-word;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+#drug_table td, #drug_table th {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 0.2em;
+}
+#drug_table td:hover {background-color: #ddd;}
+
 
 /* Full-height Fixed Vertical Navbar */
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 11rem;
+  width: 11.5rem; /* width of the navbar */
   background-color: #f1f1f1;
   border-right: 0.8px solid #ccc;
   position: fixed;
@@ -272,14 +306,14 @@ li a:hover:not(.active) {
 .side-nav h1 {
   font-size: 18px;
   text-align: center;
-  margin:0;
+  margin: 0;
   border-bottom: 1px solid #ccc;
 }
 .side-nav h1 a {
   padding: 20px 0 15px;
 }
 .side-nav h1 img {
-  width: 90px;
+  width: 120px;
 }
 .side-nav h1 small {
   font-size: 12px;
@@ -305,8 +339,8 @@ li a:hover:not(.active) {
 }
 .side-nav ul.mqc-nav, .side-nav ul.mqc-nav ul {
   height: 100%;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   list-style-type: none;
   overflow: auto;
   position: fixed;
@@ -320,14 +354,15 @@ li a:hover:not(.active) {
   background-color: #dedede;
 }
 .side-nav .mqc-nav a.nav-l1 {
-  padding: 10px;
+  /* top, right, bottom, left */
+  padding: 10px 0px 10px 0px;
   border-top: 1px solid #ccc;
 }
 .side-nav .mqc-nav li:first-child .nav-l1 {
   border-top: 0;
 }
 .side-nav .mqc-nav a.nav-l2 {
-  padding: 5px 10px 5px 15px;
+  padding: 5px 0px 5px 0px;
   border-top: 1px solid #dedede;
   font-size: 1.0em;
   color: #788fa4;
@@ -361,7 +396,7 @@ li a:hover:not(.active) {
   background-color: #ddd;
   border-color: #999;
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: 15px;
   margin: 0;
 }
@@ -403,17 +438,51 @@ li a:hover:not(.active) {
   border-top: 0.8px solid #ccc;
   font-size: 0.9rem;
   color: #999;
-  margin-left: 11rem;
-  margin-right: -3rem;
+  margin-left: 11.5rem; /* width of navbar(ul) */
+  margin-right: -2.2rem;
   padding: 1px 0px; /* 1px will ensure that the footer reaches the bottom of the page */
 }
 .footer p {
-  margin-left: 2rem; /* 2rem = width of main_page subtract nav */
-  padding: 1px 10px;
+  margin-left: 3.5rem; /* width of main_page (15rem) subtract navbar(ul) (11.5rem) */
+  padding: 1px;
   font-size: 0.8rem;
   color: #999;
 }
 .footer a {
   color: #999;
   text-decoration: underline;
+}
+
+/* summary */
+.sum-R{
+  font-size: 1.2rem;
+  color: #2D695B;
+}
+.sum-U{
+  font-size: 1.2rem;
+  color: #F3B13E;
+}
+.sum-A{
+  font-size: 1.2rem;
+  color:  #AF2318;
+}
+.sum-info{
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: 0;
+}
+.sum-drug{
+  white-space:pre-wrap;
+  width:50px;
+}
+
+#multi-locus{
+  font-size: 1.4rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+#single-locus{
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
