@@ -24,6 +24,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+# Conda converted packages
+conda.packages/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -113,9 +115,6 @@ ENV/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Conda converted packages
-conda.packages/*
 
 # Others
 ./panno/test.py

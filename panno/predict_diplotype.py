@@ -118,24 +118,27 @@ def parse_input_allele(filtered_vcf, info):
                     base = 'ins' + base[4:] + ref_hap_base[0][-1]
                   # long dup
                   else:
-                    flag = 0
+                    flag = 0; modd = 'modd'
                     if ref_hap_base[0].startswith('ref') is False:
                       for r in defined:
                         if r.startswith('delins'):
                           modd = 'C'; flag = 1; break
                     else:
                       modd = ref_hap_base[0].replace('ref', '')
-                    if re.search(modd, base):
-                      matched_span = re.search(modd, base).span()
-                      if modd.startswith(base[matched_span[1]:]):
-                        base = 'ins' + modd * int((matched_span[1] - matched_span[0])/len(modd) + 1)
-                      else:
-                        base = 'ins' + modd * int((matched_span[1] - matched_span[0])/len(modd))
+                    # print(mat, defined, ref_hap_base, base, ref, alt, ref_hap)
+                    if modd != 'modd':
+                      if re.search(modd, base):
+                        matched_span = re.search(modd, base).span()
+                        if modd.startswith(base[matched_span[1]:]):
+                          base = 'ins' + modd * int((matched_span[1] - matched_span[0])/len(modd) + 1)
+                        else:
+                          base = 'ins' + modd * int((matched_span[1] - matched_span[0])/len(modd))
                     if flag == 1:
                       base = 'del' + base + 'C'
                 base_raw = alt
                 if base not in defined:
-                  print('Warning in Ins or Dup!'); print(row.T); print(pos); print(base)
+                  print('Warning in Ins or Dup on %s:%s! Input variant is %s, while the definition is %s.' % (info['chrom'], pos, base, '|'.join(defined)))
+                  print(row.to_dict())
             ## Add the result into tuple_res
             tuple_res = tuple_res + (base,)
             tuple_res_display = tuple_res_display + (base_raw,)
