@@ -9,12 +9,12 @@ from itertools import *
 def report (race, summary, prescribing_info, multi_var, single_var, phenotype_predict, clinical_anno, fp, sample_id):
   with open(fp, 'w+', encoding="utf-8") as f:
     ## Style
-    css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
-    logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
-    icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
-    # css_fp = os.path.join('./panno/assets/custom.css')
-    # logo_fp = os.path.join('./panno/assets/panno_logo.png')
-    # icon_fp = os.path.join('./panno/assets/panno_icon.png')
+    # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+    # logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
+    # icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
+    css_fp = os.path.join('./panno/assets/custom.css')
+    logo_fp = os.path.join('./panno/assets/panno_logo.png')
+    icon_fp = os.path.join('./panno/assets/panno_icon.png')
     logo_base64 = base64.b64encode(open(logo_fp, "rb").read()).decode()
     icon_base64 = base64.b64encode(open(icon_fp, "rb").read()).decode()
     
@@ -227,15 +227,16 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         # if len(diplotype) > 1:
         #   print(diplotype)
         
-        print('<p><font color="#444">Gene: %s; Diplotype: %s; Phenotype: %s</font></p>' % (gene, ''.join(diplotype) , ''.join(phenotype)), file=f)
+        print('<p><font color="#444"><b>Gene:</b> %s.  <b>Diplotype:</b> %s.  <b>Phenotype:</b> %s.</font></p>' % (gene, ''.join(diplotype) , ''.join(phenotype)), file=f)
        
-        drug_guide = drug_by_gene[['PAID', 'Source', 'Summary']].copy()
+        drug_guide = drug_by_gene[['PAID', 'Source', 'Summary', 'Recommendation']].copy()
         drug_guide = drug_guide.drop_duplicates()
         for index, row in drug_guide.iterrows():
-          if row.Summary.startswith('There are currently no'):
-            print('<div class="alert alert-info-red"><a href=%s target="_blank" style="color: #7C3A37"><i class="fa-solid fa-circle-info"></a></i><b> %s: </b>%s</div>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, row.Summary), file=f)
-          else:
-            print('<div class="alert alert-info-blue"><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i><b> %s: </b>%s</div>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, row.Summary), file=f)
+          # if row.Summary.startswith('There are currently no'):
+          #   print('<div class="alert alert-info-red"><a href=%s target="_blank" style="color: #7C3A37"><i class="fa-solid fa-circle-info"></a></i><b> %s: </b>%s</div>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, row.Summary), file=f)
+          # else:
+          desc = row.Summary+'\n'+row.Recommendation
+          print('<div class="alert alert-info-blue"><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i><b> %s: </b>%s</div>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, desc.replace('\n', '<br>')), file=f)
     
     ## Part 4: Diplotype Detail
     print('<h2 id="diplotype detail"><b>Diplotype Detail</b></h2>', file=f)
@@ -307,7 +308,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     print('<h2 id="clinical annotation"><b>Clinical Annotation</b></h2>', file=f)
     print('<p class="main_lead">PAnno annotates PGx-related diplotypes using the high-confidence clinical annotations from PharmGKB (1A, 1B, 2A, 2B), which is the basis for predicting the phenotypes in the above section.</p>', file=f)
     
-    header = '<table id="atable" border="1" cellspacing="0">\n<tr><th>Drug</th><th>Category</th><th>Gene</th><th>Variant</th><th>Diplotype</th><th>Level</th><th>Phenotype</th><th>Annotation</th></tr>'
+    header = '<table id="atable" border="1" cellspacing="0">\n<tr><th>Drug</th><th>Category</th><th>Gene</th><th>Variant</th><th>Diplotype</th><th>Level</th><th>Phenotype</th><th>PharmGKB ID</th></tr>'
     for drug in list(clinical_anno.Drug.drop_duplicates()):
       drug_sub = clinical_anno[clinical_anno.Drug == drug]
       # There needs to be a value dedicated to statistics corresponding to several catagories.
@@ -318,7 +319,9 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         if len(drug_by_cat) > 0:
           header = header + '\n<td rowspan="%s">%s</td></tr>' % (len(drug_by_cat)+1,category)
           for index, row in drug_by_cat.iterrows():
-            header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype,  row.EvidenceLevel, row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID))
+            header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href=%s target="_blank">%s</a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype,  row.EvidenceLevel, row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID),row.CAID)
+            # for index, row in drug_by_cat.iterrows():
+            # header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype,  row.EvidenceLevel, row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID))
     header = header + '\n</table>'
     print(header, file=f)
     
@@ -351,4 +354,3 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     </html>
     """
     print(disclaimer, file=f)
-
