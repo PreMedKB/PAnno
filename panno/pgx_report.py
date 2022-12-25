@@ -9,12 +9,12 @@ from itertools import *
 def report (race, summary, prescribing_info, multi_var, single_var, phenotype_predict, clinical_anno, fp, sample_id):
   with open(fp, 'w+', encoding="utf-8") as f:
     ## Style
-    # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
-    # logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
-    # icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
-    css_fp = os.path.join('./panno/assets/custom.css')
-    logo_fp = os.path.join('./panno/assets/panno_logo.png')
-    icon_fp = os.path.join('./panno/assets/panno_icon.png')
+    css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+    logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
+    icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
+    # css_fp = os.path.join('./panno/assets/custom.css')
+    # logo_fp = os.path.join('./panno/assets/panno_logo.png')
+    # icon_fp = os.path.join('./panno/assets/panno_icon.png')
     logo_base64 = base64.b64encode(open(logo_fp, "rb").read()).decode()
     icon_base64 = base64.b64encode(open(icon_fp, "rb").read()).decode()
     
@@ -36,7 +36,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
       <div class="side-nav">
         <ul class="mqc-nav collapse navbar-collapse">
         <h1>
-          <a href="#">
+          <a href="https://github.com/PreMedKB/PAnno" target="_blank">
             <img src="data:image/png;base64,%s" alt="PAnno">
             <br class="hidden-xs">
             <small class="hidden-xs">%s</small>
@@ -227,16 +227,12 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         # if len(diplotype) > 1:
         #   print(diplotype)
         
-        print('<p><font color="#444"><b>Gene:</b> %s.  <b>Diplotype:</b> %s.  <b>Phenotype:</b> %s.</font></p>' % (gene, ''.join(diplotype) , ''.join(phenotype)), file=f)
+        print('<p><font color="#444">Gene: %s; Diplotype: %s; Phenotype: %s</font></p>' % (gene, ''.join(diplotype) , ''.join(phenotype)), file=f)
        
-        drug_guide = drug_by_gene[['PAID', 'Source', 'Summary', 'Recommendation']].copy()
+        drug_guide = drug_by_gene[['PAID', 'Source', 'Summary','Recommendation']].copy()
         drug_guide = drug_guide.drop_duplicates()
         for index, row in drug_guide.iterrows():
-          # if row.Summary.startswith('There are currently no'):
-          #   print('<div class="alert alert-info-red"><a href=%s target="_blank" style="color: #7C3A37"><i class="fa-solid fa-circle-info"></a></i><b> %s: </b>%s</div>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, row.Summary), file=f)
-          # else:
-          desc = row.Summary+'\n'+row.Recommendation
-          print('<div class="alert alert-info-blue"><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i><b> %s: </b>%s</div>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, desc.replace('\n', '<br>')), file=f)
+          print('<table id="pre_table"><tr><td rowspan="2" id="tdw"><div class="alert alert-info-blue"><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></i></a><b> %s </b></div></td><td><b>Summary: </b>%s</td></tr><tr><td><b>Recommendation: </b>%s</td></tr></table>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, row.Summary.strip('"').strip("'"), row.Recommendation.strip('"').strip("'")), file=f)
     
     ## Part 4: Diplotype Detail
     print('<h2 id="diplotype detail"><b>Diplotype Detail</b></h2>', file=f)
@@ -246,24 +242,31 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     for gene in ["CYP2B6", "CYP2C8", "CYP2C9", "CYP2C19", "CYP2D6", "CYP3A4", "CYP3A5", "CYP4F2", "DPYD", "NUDT15", "SLCO1B1", "TPMT", "UGT1A1"]:
       diplotype_by_gene = multi_var[multi_var.Gene == gene]
       print('<h3><b>%s: %s</b></h3>' % (gene, ''.join(list(diplotype_by_gene.Diplotype.drop_duplicates()))), file=f)
-      if (gene == "CYP2B6"):# & ("*29/*30" in list(diplotype_by_gene.Diplotype.drop_duplicates())):
+      if (gene == "CYP2B6"):
         print('<div class="alert alert-info-red">Please notice that CYP2B6*29, CYP2B6*30 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
-      if (gene == "CYP2C19"):# & ("*36/*37" in list(diplotype_by_gene.Diplotype.drop_duplicates())):
+      if (gene == "CYP2C19"):
         print('<div class="alert alert-info-red">Please notice that CYP2C19*36, CYP2C19*37 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
-      if (gene == "CYP2D6"):# & ("*5/*13/*61/*63/CNV" in list(diplotype_by_gene.Diplotype.drop_duplicates())):
+      if (gene == "CYP2D6"):
         print('<div class="alert alert-info-red">Please notice that CYP2D6*5, CYP2D6*13, CYP2D6*61, CYP2D6*63, CYP2D6*68 and CYP2D6 CNVs were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
-      if (gene == "SLCO1B1"):# & ("*48/*49" in list(diplotype_by_gene.Diplotype.drop_duplicates())):
+      if (gene == "SLCO1B1"):
         print('<div class="alert alert-info-red">Please notice that SLCO1B1*48, SLCO1B1*49 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
-      header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th>Position</th><th>Variant</th><th>Effect on Protein</th><th>Definition of Alleles</th><th>Detected Alleles</th></tr>'
-      for index,row in diplotype_by_gene.iterrows():
-        header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], row['Definition of Alleles'], row['Detected Alleles'])
+      header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th>Position</th><th>Variant</th><th>Effect on Protein</th><th colspan="2">Definition of Alleles</th><th>Variant Call</th></tr>'
+      
+      for index, row in diplotype_by_gene.iterrows():
+        co = 'color:#7C3A37;' if (row['Variant Call'] == "Missing") else 'color:#444'
+        lis = row['Definition of Alleles'].split(";")
+        if len(lis) == 2:
+          header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td style="%s">%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], lis[0], lis[1], co, row['Variant Call'])
+        else:
+          header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td colspan="2">%s</td><td style="%s">%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], row['Definition of Alleles'], co, row['Variant Call'])
       header = header + '\n</table>'
       print(header, file=f)
     
     print('<h3 id="single-variant"><b>Single-variant allele</b></h3>', file=f)
-    header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th width="200px">Gene</th><th width="200px">Variant</th><th width="200px">Detected Alleles</th></tr>'
+    header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th width="200px">Gene</th><th width="200px">Variant</th><th width="200px">Variant Call</th></tr>'
     for index, row in single_var.iterrows():
-      header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td></tr>' % (row.Gene, row.Variant, row['Detected Alleles'])
+      co = 'color:#7C3A37;' if (row['Variant Call'] == "Missing") else 'color:#444'
+      header = header + '\n<tr><td>%s</td><td>%s</td><td  style="%s">%s</td></tr>' % (row.Gene, row.Variant, co,row['Variant Call'])
     header = header + '\n</table>'
     print(header, file=f)
     
@@ -299,7 +302,72 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         efficacy = '-'
       if metabolism == '':
         metabolism = '-'
-      header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % (drug, toxicity, dosage, efficacy, metabolism)
+      if toxicity == 'Normal':
+        col2 = 'color:#AA6976'
+        col3 = '◎ '
+      elif toxicity == 'Increased':
+        col2 = 'color:#5A4088'
+        col3='⤊ '
+      elif toxicity == 'Decreased':
+        col2 ='color:#E1AE90'
+        col3='⤋ '
+      else:
+        col2 ='color:#000000'
+        col3=''
+
+      if dosage == 'Normal':
+        col4 = 'color:#AA6976'
+        col5 = '◎ '
+      elif dosage == 'Increased':
+        col4 = 'color:#5A4088'
+        col5='⤊ '
+      elif dosage == 'Decreased':
+        col4 ='color:#E1AE90'
+        col5='⤋ '
+      else:
+        col4 ='color:#000000'
+        col5=''
+
+      if efficacy == 'Normal':
+        col6 = 'color:#AA6976'
+        col7 = '◎ '
+      elif efficacy == 'Increased':
+        col6 = 'color:#5A4088'
+        col7='⤊ '
+      elif efficacy == 'Decreased':
+        col6 ='color:#E1AE90'
+        col7='⤋ '
+      else:
+        col6 ='color:#000000'
+        col7=''
+
+      if efficacy == 'Normal':
+        col6 = 'color:#AA6976'
+        col7 = '◎ '
+      elif efficacy == 'Increased':
+        col6 = 'color:#5A4088'
+        col7='⤊ '
+      elif efficacy == 'Decreased':
+        col6 ='color:#E1AE90'
+        col7='⤋ '
+      else:
+        col6 ='color:#000000'
+        col7=''
+
+      if metabolism == 'Normal':
+        col8 = 'color:#AA6976'
+        col9 = '◎ '
+      elif metabolism == 'Increased':
+        col8 = 'color:#5A4088'
+        col9='⤊ '
+      elif metabolism == 'Decreased':
+        col8 ='color:#E1AE90'
+        col9='⤋ '
+      else:
+        col8 ='color:#000000'
+        col9=''
+      
+      header = header + '\n<tr><td>%s</td><td style="%s">%s</td><td style="%s">%s</td><td style="%s">%s</td><td style="%s">%s</td></tr>' % (drug, col2, col3+toxicity, col4, col5+dosage, col6, col7+efficacy, col8, col9+metabolism)
     
     header = header + '\n</table>'
     print(header, file=f)
@@ -319,7 +387,18 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         if len(drug_by_cat) > 0:
           header = header + '\n<td rowspan="%s">%s</td></tr>' % (len(drug_by_cat)+1,category)
           for index, row in drug_by_cat.iterrows():
-            header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href=%s target="_blank">%s</a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype,  row.EvidenceLevel, row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID),row.CAID)
+            col1 = 'color:#25B16B' if ((row['EvidenceLevel'] == "1A") or (row['EvidenceLevel'] == "1B")) else 'color:#216ED4'
+            if row.PAnnoPhenotype == "Normal":
+              col2 = 'color:#AA6976'
+              col3 = '◎ '
+            elif row.PAnnoPhenotype == "Increased":
+              col2 = 'color:#5A4088'
+              col3='⤊ '
+            else:
+              col2 ='color:#E1AE90'
+              col3='⤋ '
+
+            header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td style="%s">%s</td><td style="%s">%s</td><td><a href=%s target="_blank">%s</a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype, col1, row.EvidenceLevel,col2,col3+row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID),row.CAID)
             # for index, row in drug_by_cat.iterrows():
             # header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype,  row.EvidenceLevel, row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID))
     header = header + '\n</table>'

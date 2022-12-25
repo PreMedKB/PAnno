@@ -127,7 +127,7 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
       position = str(pos_res[0]) + ':' + str(pos_res[1])
       multi_df.append([gene, dic_diplotype[gene]['step2_res'], position, pos_res[4], pos_res[5], pos_res[6], pos_res[7]])
   
-  multi_var = pd.DataFrame(multi_df, columns=['Gene', 'Diplotype', 'Position', 'Variant', 'Effect on Protein', 'Definition of Alleles', 'Detected Alleles'])
+  multi_var = pd.DataFrame(multi_df, columns=['Gene', 'Diplotype', 'Position', 'Variant', 'Effect on Protein', 'Definition of Alleles', 'Variant Call'])
   
   ## SingleVar
   # 1. HLA
@@ -149,7 +149,7 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
       phenotype = '-'
       detected = 'Missing'
     detected_hla.append([gene, var, detected, phenotype])
-  detected_hla_df = pd.DataFrame(detected_hla, columns=['Gene', 'Variant', 'Detected Alleles', 'Phenotype']).drop(columns=['Phenotype'])
+  detected_hla_df = pd.DataFrame(detected_hla, columns=['Gene', 'Variant', 'Variant Call', 'Phenotype']).drop(columns=['Phenotype'])
   
   # 1. SNP/Indel
   rsid_anno = cursor.execute('SELECT Gene, Variant FROM ClinAnn WHERE EvidenceLevel != 3 AND Variant LIKE "rs%";')
@@ -157,12 +157,12 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   rsid_anno_df = pd.DataFrame(rsid_anno, columns = ['Gene', 'Variant'])
   rsid_guide_df = rule_df[rule_df.Variant.str.startswith('rs')][['Gene', 'Variant']]
   rsid_df = pd.concat([rsid_anno_df, rsid_guide_df], axis = 0).drop_duplicates().reset_index(drop = True)
-  rsid_df.insert(2, 'Detected Alleles', 'Missing')
+  rsid_df.insert(2, 'Variant Call', 'Missing')
   for index, row in rsid_df.iterrows():
     rsid = row.Variant
     if row.Variant in dic_rs2gt.keys():
       allele1 = dic_rs2gt[rsid][0]; allele2 = dic_rs2gt[rsid][1]
-      row['Detected Alleles'] = '%s/%s' % (allele1, allele2)
+      row['Variant Call'] = '%s/%s' % (allele1, allele2)
     rsid_df.iloc[index] = row
   
   single_var = pd.concat([rsid_df, detected_hla_df], axis = 0).drop_duplicates().sort_values(by=['Gene', 'Variant'])
@@ -177,17 +177,17 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   # 1. Filter by variant
   ann_df_retain = pd.DataFrame()
   for index, row in single_var.iterrows():
-    if row['Detected Alleles'] != 'Missing':
+    if row['Variant Call'] != 'Missing':
       if row['Variant'].startswith('rs'):
-        allele1 = row['Detected Alleles'].split('/')[0]
-        allele2 = row['Detected Alleles'].split('/')[1]
+        allele1 = row['Variant Call'].split('/')[0]
+        allele2 = row['Variant Call'].split('/')[1]
         res = ann_df[(ann_df.Gene == row.Gene) & (ann_df.Variant == row.Variant) & (((ann_df.Allele1 == allele1) & (ann_df.Allele2 == allele2)) | ((ann_df.Allele1 == allele2) & (ann_df.Allele2 == allele1)))]
         res.insert(0, 'VariantNew', row['Variant'])
-        res.insert(1, 'Diplotype', row['Detected Alleles'])
-      elif row['Detected Alleles'] != 'Zero copy':
+        res.insert(1, 'Diplotype', row['Variant Call'])
+      elif row['Variant Call'] != 'Zero copy':
         res = ann_df[(ann_df.Gene == row.Gene) & ((ann_df.Allele1 == row.Variant) | (ann_df.Allele2 == row.Variant))]
         res.insert(0, 'VariantNew', row['Variant'])
-        res.insert(1, 'Diplotype', row['Detected Alleles'])
+        res.insert(1, 'Diplotype', row['Variant Call'])
       ann_df_retain = pd.concat([ann_df_retain, res])
   
   for index, row in multi_var[['Gene', 'Diplotype']].drop_duplicates().iterrows():

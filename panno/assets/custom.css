@@ -215,7 +215,7 @@ p {
   background-color: #d9edf7;
   border-color: #bce8f1;
   color: #3a87ad;
-  text-align: justify;
+  /* text-align: justify; */
 }
 
 
@@ -269,6 +269,30 @@ p {
   padding: 0.2em;
 }
 #drug_table td:hover {background-color: #ddd;}
+
+#pre_table {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  border: 0;
+  width: 100%;
+  table-layout:fixed;
+  word-break:break-word;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  border-collapse: collapse;
+  color: #444;
+}
+#pre_table td {
+  border: 1px solid #ddd;
+  /* text-align: center; */
+  padding: 0.5em;
+  border-collapse: collapse;
+}
+#tdw{
+  width: 8%;
+}
+
+
 
 
 /* Full-height Fixed Vertical Navbar */
