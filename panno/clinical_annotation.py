@@ -107,16 +107,13 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   ###--------- Section 1: Summary ---------###
   avoid_drug.sort(); caution_drug.sort(); routine_drug.sort()
   summary = {'Avoid': avoid_drug, 'Caution': caution_drug, 'Routine': routine_drug}
+  
   ###--------- Section 2: Prescribing Info ---------###
   detected_allele.extend(detected_hla)
   prescribing_info = pd.DataFrame(detected_allele, columns=['Gene', 'Variant', 'Diplotype', 'Phenotype']).drop_duplicates().merge(mg.drop(columns=['Phenotype']), on=['Gene'])
   prescribing_info = prescribing_info[['Drug', 'Gene', 'Variant', 'Diplotype', 'Phenotype', 'Summary', 'Recommendation', 'Source', 'PAID', 'Avoid', 'Alternate', 'Dosing']].sort_values(by=['Drug'])
-  ###--------- Section 3: Diplotype Detail ---------###
-  # Gene list: 53 genes, contains rs12777823 which does not has gene symbol
-  # gene_list = cursor.execute("SELECT DISTINCT Gene FROM ClinAnn WHERE EvidenceLevel IN ('1A', '1B', '2A', '2B') OR Gene IN (SELECT DISTINCT Gene FROM GuidelineMerge);")
-  # gene_list = cursor.fetchall()
-  # single = ["CFTR", "SLCO1B1", "-", "VKORC1", "UGT1A6", "CYP2C19", "CYP2A6", "CYP2B6", "CYP2C8", "CYP2C9", "MTHFR", "CYP3A4", "TPMT", "CYP3A5", "ABCG2", "ALDH2", "UGT1A1", "NUDT15", "CYP2D6", "G6PD", "CES1", "APOE", "DPYD", "IFNL3", "IFNL4", "F5", "CHRNA5", "RYR1", "ACE", "SLC28A3", "CACNA1S", "CYP4F2", "XRCC1", "TNF", "KIF6", "ADRB2", "ATIC", "ADD1", "EGFR", "XPNPEP2", "MT-RNR1", "MT-ND1", "ITPA", "FCGR3A", "RARG", "SCN1A", "SLC19A1", "NAT2", "HLA-A", "HLA-B", "HLA-C", "HLA-DRB1", "HLA-DPB1"]
   
+  ###--------- Section 3: Diplotype Detail ---------###
   ## MultiVar
   multi = ["CACNA1S", "CFTR", "CYP2B6", "CYP2C8", "CYP2C9", "CYP2C19", "CYP2D6", "CYP3A4", "CYP3A5", "CYP4F2", "DPYD", "NUDT15", "RYR1", "SLCO1B1", "TPMT", "UGT1A1"]
   multi_df = []

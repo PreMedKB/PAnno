@@ -241,7 +241,10 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     print('<h3 id="multi-variant"><b>Multi-variant allele</b></h3>', file=f)
     for gene in ["CYP2B6", "CYP2C8", "CYP2C9", "CYP2C19", "CYP2D6", "CYP3A4", "CYP3A5", "CYP4F2", "DPYD", "NUDT15", "SLCO1B1", "TPMT", "UGT1A1"]:
       diplotype_by_gene = multi_var[multi_var.Gene == gene]
-      print('<h3><b>%s: %s</b></h3>' % (gene, ''.join(list(diplotype_by_gene.Diplotype.drop_duplicates()))), file=f)
+      dip = list(diplotype_by_gene.Diplotype.drop_duplicates())
+      if len(dip) > 1:
+        print('Warning: There is more than one diplotype of %s inferred by PAnno.' % gene)
+      print('<h3><b>%s: %s</b></h3>' % (gene, ''.join(dip)), file=f)
       if (gene == "CYP2B6"):
         print('<div class="alert alert-info-red">Please notice that CYP2B6*29, CYP2B6*30 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
       if (gene == "CYP2C19"):
@@ -250,17 +253,31 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         print('<div class="alert alert-info-red">Please notice that CYP2D6*5, CYP2D6*13, CYP2D6*61, CYP2D6*63, CYP2D6*68 and CYP2D6 CNVs were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
       if (gene == "SLCO1B1"):
         print('<div class="alert alert-info-red">Please notice that SLCO1B1*48, SLCO1B1*49 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
-      header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th>Position</th><th>Variant</th><th>Effect on Protein</th><th colspan="2">Definition of Alleles</th><th>Variant Call</th></tr>'
       
-      for index, row in diplotype_by_gene.iterrows():
-        co = 'color:#7C3A37;' if (row['Variant Call'] == "Missing") else 'color:#444'
-        lis = row['Definition of Alleles'].split(";")
-        if len(lis) == 2:
-          header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td style="%s">%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], lis[0], lis[1], co, row['Variant Call'])
-        else:
-          header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td colspan="2">%s</td><td style="%s">%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], row['Definition of Alleles'], co, row['Variant Call'])
+      alleles_definition = diplotype_by_gene['Definition of Alleles'].str.split("; |:", expand=True)
+      if alleles_definition.shape[1] == 4:
+        col_d1 = 'Definition of %s' % alleles_definition.iloc[0,0]
+        col_d2 = 'Definition of %s' % alleles_definition.iloc[0,2]
+        diplotype_by_gene.insert(diplotype_by_gene.shape[1], col_d1, alleles_definition.iloc[:,1])
+        diplotype_by_gene.insert(diplotype_by_gene.shape[1], col_d2, alleles_definition.iloc[:,3])
+        header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th>Position</th><th>Variant</th><th>Effect on Protein</th><th>%s</th><th>%s</th><th>Variant Call</th></tr>' % (col_d1, col_d2)
+        for index, row in diplotype_by_gene.iterrows():
+          co = 'color:#7C3A37;' if (row['Variant Call'] == "Missing") else 'color:#444'
+          header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td style="%s">%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], row[col_d1], row[col_d2], co, row['Variant Call'])
+      elif alleles_definition.shape[1] == 2:
+        col_d1 = 'Definition of %s' % alleles_definition.iloc[0,0]
+        diplotype_by_gene.insert(diplotype_by_gene.shape[1], col_d1, alleles_definition.iloc[:,1])
+        header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th>Position</th><th>Variant</th><th>Effect on Protein</th><th>%s</th><th>Variant Call</th></tr>' % col_d1
+        for index, row in diplotype_by_gene.iterrows():
+          co = 'color:#7C3A37;' if (row['Variant Call'] == "Missing") else 'color:#444'
+          header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td style="%s">%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], row[col_d1], co, row['Variant Call'])
+      else:
+        for index, row in diplotype_by_gene.iterrows():
+          co = 'color:#7C3A37;' if (row['Variant Call'] == "Missing") else 'color:#444'
+          header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td style="%s">%s</td></tr>' % (row['Position'], row['Variant'] , row['Effect on Protein'], row['Definition of Alleles'], co, row['Variant Call'])
       header = header + '\n</table>'
       print(header, file=f)
+    
     
     print('<h3 id="single-variant"><b>Single-variant allele</b></h3>', file=f)
     header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th width="200px">Gene</th><th width="200px">Variant</th><th width="200px">Variant Call</th></tr>'

@@ -270,7 +270,8 @@ def predict(filtered_vcf, race, gene_list):
     
     # Detail of diplotypes
     if final_rank_res != '-':
-      haplotypes = set(re.split('; |/', final_rank_res))
+      tmp = re.split('; |/', final_rank_res)
+      haplotypes = sorted(set(tmp), key = tmp.index)
     else:
       haplotypes = [info['reference_haplotype']]
     diplotype_details = []
