@@ -171,6 +171,10 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   ann_df = pd.DataFrame(ann, columns=['ID', 'CAID', 'Gene', 'Variant', 'Allele1', 'Allele2', 'Annotation1', 'Annotation2', 'Function1', 'Function2', 'Score1', 'Score2', 'CPICPhenotype', 'PAnnoPhenotype', 'Drug', 'Phenotypes', 'EvidenceLevel', 'LevelOverride', 'LevelModifier', 'Score', 'PMIDCount', 'EvidenceCount', 'Specialty', 'PhenotypeCategory'])
   ann_df.PhenotypeCategory = ann_df.PhenotypeCategory.replace('Metabolism/PK', 'Metabolism')
   
+  # 0. Filter rs12979860 (IFNL3 and IFNL4)
+  rm_index = ann_df[(ann_df.Variant == 'rs12979860') & (ann_df.Gene == 'IFNL3')].ID.to_list()
+  ann_df = ann_df[ann_df.ID.isin(rm_index) == False]
+  
   # 1. Filter by variant
   ann_df_retain = pd.DataFrame()
   for index, row in single_var.iterrows():
@@ -202,8 +206,8 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   #   if ann_df_retain[ann_df_retain.Drug == drug].empty:
   #     print(drug)
   
-
   ###--------- Section 4: Phenotype Prediction ---------###
+  summary['NotInAnno'] = mg[mg.Drug.isin(ann_df.Drug.to_list()) == False].Drug.drop_duplicates().to_list()
   # Categorize by phenotypes and drugs
   ann_df_retain.insert(0, 'PAnnoScore', np.nan)
   for index, row in ann_df_retain.iterrows():
@@ -235,7 +239,7 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
     phenotype_predict = pd.concat([phenotype_predict, cat_pgx]).sort_values(by=['Drug'])
   
   ###--------- Section 5: Clinical Annotation ---------###
-  clinical_anno = ann_df_retain[['Drug', 'Gene', 'VariantNew', 'Diplotype', 'PhenotypeCategory', 'EvidenceLevel', 'PAnnoPhenotype', 'CAID']].rename(columns={'VariantNew': 'Variant'}).sort_values(by=['Drug'])
+  clinical_anno = ann_df_retain[['Drug', 'Gene', 'VariantNew', 'Diplotype', 'PhenotypeCategory', 'EvidenceLevel', 'PAnnoPhenotype', 'CAID']].rename(columns={'VariantNew': 'Variant'}).drop_duplicates().sort_values(by=['Drug'])
   
   cursor.close()
   conn.close()

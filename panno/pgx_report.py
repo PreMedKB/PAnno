@@ -9,12 +9,12 @@ from itertools import *
 def report (race, summary, prescribing_info, multi_var, single_var, phenotype_predict, clinical_anno, fp, sample_id):
   with open(fp, 'w+', encoding="utf-8") as f:
     ## Style
-    css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
-    logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
-    icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
-    # css_fp = os.path.join('./panno/assets/custom.css')
-    # logo_fp = os.path.join('./panno/assets/panno_logo.png')
-    # icon_fp = os.path.join('./panno/assets/panno_icon.png')
+    # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+    # logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
+    # icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
+    css_fp = os.path.join('./panno/assets/custom.css')
+    logo_fp = os.path.join('./panno/assets/panno_logo.png')
+    icon_fp = os.path.join('./panno/assets/panno_icon.png')
     logo_base64 = base64.b64encode(open(logo_fp, "rb").read()).decode()
     icon_base64 = base64.b64encode(open(icon_fp, "rb").read()).decode()
     
@@ -57,7 +57,8 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     <div class="main_page">
     """
     print(head_nav%(icon_base64, open(css_fp).read(), icon_base64, 'v0.3.0'), file=f)
-   
+    
+
     ## Part 0: Basic information
     basic_info = """
     <h1 id="page_title">
@@ -74,6 +75,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     """
     print(basic_info%(logo_base64, sample_id, race, time.asctime(time.localtime(time.time()))), file=f)
     
+
     ## Part 1: Sort disclaimer
     disclaimer_short = """
     <div class="alert alert-info-yellow">
@@ -81,6 +83,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     </div>
     """
     print(disclaimer_short, file=f)
+    
 
     ## Part 2: Pharmacogenomics Annotation
     part2_header = """
@@ -209,7 +212,8 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
       i = i+7
     header = header + '\n</table>'
     print(header, file=f)
-   
+    
+
     ## Part 3: Prescribing Info
     print('<h2 id="prescribing info"><b>Prescribing Info</b></h2>', file=f)
     
@@ -227,12 +231,15 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         # if len(diplotype) > 1:
         #   print(diplotype)
         
-        print('<p><font color="#444">Gene: %s; Diplotype: %s; Phenotype: %s</font></p>' % (gene, ''.join(diplotype) , ''.join(phenotype)), file=f)
+        print('<p><font color="#444"><b>Gene</b>: %s&nbsp;&nbsp;&nbsp;&nbsp;<b>Diplotype</b>: %s&nbsp;&nbsp;&nbsp;&nbsp;<b>Phenotype</b>: %s</font></p>' % (gene, ''.join(diplotype) , ''.join(phenotype)), file=f)
        
         drug_guide = drug_by_gene[['PAID', 'Source', 'Summary','Recommendation']].copy()
         drug_guide = drug_guide.drop_duplicates()
         for index, row in drug_guide.iterrows():
-          print('<table id="pre_table"><tr><td rowspan="2" id="tdw"><div class="alert alert-info-blue"><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></i></a><b> %s </b></div></td><td><b>Summary: </b>%s</td></tr><tr><td><b>Recommendation: </b>%s</td></tr></table>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, row.Summary.strip('"').strip("'"), row.Recommendation.strip('"').strip("'")), file=f)
+          summary_text = row.Summary.replace(' ""The genotype', ' The genotype').replace('""', '"').replace("''", "'").strip('"').strip("'")
+          recommend_text = row.Recommendation.replace(' ""The genotype', ' The genotype').replace('""', '"').replace("''", "'").strip('"').strip("'")
+          print('<table id="pre_table"><tr><td rowspan="2" id="tdw"><div class="alert alert-info-blue"><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></i></a><b> %s </b></div></td><td><b>Summary: </b>%s</td></tr><tr><td><b>Recommendation: </b>%s</td></tr></table>' % ("https://www.pharmgkb.org/guidelineAnnotation/"+row.PAID, row.Source, summary_text, recommend_text), file=f)
+    
     
     ## Part 4: Diplotype Detail
     print('<h2 id="diplotype detail"><b>Diplotype Detail</b></h2>', file=f)
@@ -278,7 +285,6 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
       header = header + '\n</table>'
       print(header, file=f)
     
-    
     print('<h3 id="single-variant"><b>Single-variant allele</b></h3>', file=f)
     header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th width="200px">Gene</th><th width="200px">Variant</th><th width="200px">Variant Call</th></tr>'
     for index, row in single_var.iterrows():
@@ -287,9 +293,26 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     header = header + '\n</table>'
     print(header, file=f)
     
+    
     ## Part 5: Phenotype Prediction
-    print('<h2 id="phenotype prediction"><b>Phenotype Prediction</b></h2>', file=f)
-    print('<p class="main_lead">For the clinically available drugs, PAnno integrates the effects of multiple diplotypes for each drug in terms of toxicity, dosage, efficacy, and metabolism. The predicted phenotypes are based on the original annotations described in the following section, and the integrated phenotypes are indicated as decreased, normal, and increased.</p>', file=f)
+    if summary['Avoid']:
+      drug1 = ', '.join(summary['Avoid'])
+    else:
+      drug1 = 'N/A'
+    if summary['NotInAnno']:
+      drug2 = ', '.join(summary['NotInAnno'])
+    else:
+      drug2 = 'N/A'
+    
+    phenotype_header = """
+    <h2 id="phenotype prediction"><b>Phenotype Prediction</b></h2>
+    <p class="main_lead">For the clinically available drugs, PAnno integrates the effects of multiple diplotypes for each drug in terms of toxicity, dosage, efficacy, and metabolism. The predicted phenotypes are based on the original annotations described in the following section, and the integrated phenotypes are indicated as decreased, normal, and increased.</p>
+    <div class="alert alert-info-blue">
+      Drugs not further annotated due to "Avoid use": %s.<br>Drugs not included in clinical annotations used by PAnno: %s.
+    </div>
+    """
+    print(phenotype_header%(drug1, drug2), file=f)
+
     header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th>Drug</th><th>Toxicity</th><th>Dosage</th><th>Efficacy</th><th>Metabolism</th></tr>'
     for drug in list(phenotype_predict.Drug.drop_duplicates()):
       drug_sub = phenotype_predict[phenotype_predict.Drug == drug]
@@ -320,65 +343,65 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
       if metabolism == '':
         metabolism = '-'
       if toxicity == 'Normal':
-        col2 = 'color:#AA6976'
+        col2 = 'color:#35787F'
         col3 = '◎ '
       elif toxicity == 'Increased':
-        col2 = 'color:#5A4088'
+        col2 = 'color:#BC3837'
         col3='⤊ '
       elif toxicity == 'Decreased':
-        col2 ='color:#E1AE90'
+        col2 ='color:#563E82'
         col3='⤋ '
       else:
         col2 ='color:#000000'
         col3=''
 
       if dosage == 'Normal':
-        col4 = 'color:#AA6976'
+        col4 = 'color:#35787F'
         col5 = '◎ '
       elif dosage == 'Increased':
-        col4 = 'color:#5A4088'
+        col4 = 'color:#BC3837'
         col5='⤊ '
       elif dosage == 'Decreased':
-        col4 ='color:#E1AE90'
+        col4 ='color:#563E82'
         col5='⤋ '
       else:
         col4 ='color:#000000'
         col5=''
 
       if efficacy == 'Normal':
-        col6 = 'color:#AA6976'
+        col6 = 'color:#35787F'
         col7 = '◎ '
       elif efficacy == 'Increased':
-        col6 = 'color:#5A4088'
+        col6 = 'color:#BC3837'
         col7='⤊ '
       elif efficacy == 'Decreased':
-        col6 ='color:#E1AE90'
+        col6 ='color:#563E82'
         col7='⤋ '
       else:
         col6 ='color:#000000'
         col7=''
 
       if efficacy == 'Normal':
-        col6 = 'color:#AA6976'
+        col6 = 'color:#35787F'
         col7 = '◎ '
       elif efficacy == 'Increased':
-        col6 = 'color:#5A4088'
+        col6 = 'color:#BC3837'
         col7='⤊ '
       elif efficacy == 'Decreased':
-        col6 ='color:#E1AE90'
+        col6 ='color:#563E82'
         col7='⤋ '
       else:
         col6 ='color:#000000'
         col7=''
 
       if metabolism == 'Normal':
-        col8 = 'color:#AA6976'
+        col8 = 'color:#35787F'
         col9 = '◎ '
       elif metabolism == 'Increased':
-        col8 = 'color:#5A4088'
+        col8 = 'color:#BC3837'
         col9='⤊ '
       elif metabolism == 'Decreased':
-        col8 ='color:#E1AE90'
+        col8 ='color:#563E82'
         col9='⤋ '
       else:
         col8 ='color:#000000'
@@ -388,6 +411,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     
     header = header + '\n</table>'
     print(header, file=f)
+    
     
     # Part 6: Clinical Annotation
     print('<h2 id="clinical annotation"><b>Clinical Annotation</b></h2>', file=f)
@@ -404,23 +428,25 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         if len(drug_by_cat) > 0:
           header = header + '\n<td rowspan="%s">%s</td></tr>' % (len(drug_by_cat)+1,category)
           for index, row in drug_by_cat.iterrows():
-            col1 = 'color:#25B16B' if ((row['EvidenceLevel'] == "1A") or (row['EvidenceLevel'] == "1B")) else 'color:#216ED4'
+            # col1 = 'color:#25B16B' if ((row['EvidenceLevel'] == "1A") or (row['EvidenceLevel'] == "1B")) else 'color:#216ED4'
+            col1 = 'level-1a1b' if ((row['EvidenceLevel'] == "1A") or (row['EvidenceLevel'] == "1B")) else 'level-2a2b'
             if row.PAnnoPhenotype == "Normal":
-              col2 = 'color:#AA6976'
+              col2 = 'color:#35787F'
               col3 = '◎ '
             elif row.PAnnoPhenotype == "Increased":
-              col2 = 'color:#5A4088'
+              col2 = 'color:#BC3837'
               col3='⤊ '
             else:
-              col2 ='color:#E1AE90'
+              col2 ='color:#563E82'
               col3='⤋ '
 
-            header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td style="%s">%s</td><td style="%s">%s</td><td><a href=%s target="_blank">%s</a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype, col1, row.EvidenceLevel,col2,col3+row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID),row.CAID)
+            header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td><span class="%s">%s</span></td><td style="%s">%s</td><td><a href=%s target="_blank">%s</a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype, col1, row.EvidenceLevel, col2, col3+row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID),row.CAID)
             # for index, row in drug_by_cat.iterrows():
             # header = header + '\n<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href=%s target="_blank"><i class="fa-solid fa-circle-info"></a></i></td></tr>' % (row.Gene, row.Variant, row.Diplotype,  row.EvidenceLevel, row.PAnnoPhenotype, "https://www.pharmgkb.org/clinicalAnnotation/"+str(row.CAID))
     header = header + '\n</table>'
     print(header, file=f)
     
+
     # Part 7: About
     disclaimer = """
     <h2 id="about"><b>About</b></h2>
