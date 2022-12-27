@@ -519,8 +519,36 @@ li a:hover:not(.active) {
   font-size: 1.4rem;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
+}
+
+
+.level-1a1b{
+  background:#55B979;
+  border-radius: 25%;
+  height: 20px;
+  width: 25px;
+  line-height: 20px;
+  display: inline-block;
+  text-align: center;
+  /* margin-right: 6px; */
+  color: white;
+  font-size: 0.9rem;
+}
+
+.level-2a2b{
+  background:#3F72D8;
+  border-radius: 25%;
+  height: 20px;
+  width: 25px;
+  line-height: 20px;
+  display: inline-block;
+  text-align: center;
+  /* margin-right: 6px; */
+  color: white;
+  font-size: 0.9rem;
 }</style>
     </head>
+    
     <body>
     <div class="side-nav-wrapper">
       <div class="side-nav">
@@ -543,6 +571,7 @@ li a:hover:not(.active) {
         </ul>
       </div>
     </div>
+    
     <div class="main_page">
     
 
@@ -555,7 +584,7 @@ li a:hover:not(.active) {
       An automated clinical pharmacogenomics annotation tool to report drug responses and prescribing recommendations by parsing the germline variants.
     </p>
     <blockquote>
-      <p style="font-size:0.95rem;">Sample ID: HG00436<br>Biogeographic Group: East Asian (EAS)<br>Report Time: Tue Dec 27 21:32:47 2022</p>
+      <p style="font-size:0.95rem;">Sample ID: HG00436<br>Biogeographic Group: East Asian (EAS)<br>Report Time: Tue Dec 27 22:50:49 2022</p>
     </blockquote>
     
 
@@ -568,6 +597,7 @@ li a:hover:not(.active) {
     <p class="main_lead">
         Drugs are classified to indicate whether the clinical guidelines recommend a prescribing change based on the given diplotypes. Original prescribing information was collected by PharmGKB, primarily from the <a href="http://cpicpgx.org/">Clinical Pharmacogenetics Implementation Consortium</a> (CPIC), the <a href="https://www.knmp.nl/dossiers/farmacogenetica/">Dutch Pharmacogenetics Working Group</a> (DPWG), the <a href="https://cpnds.ubc.ca/">Canadian Pharmacogenomics Network for Drug Safety</a> (CPNDS), the French National Network of Pharmacogenetics (RNPGx).
     </p>
+    
     
 <b class="sum-A">Avoid use</b><br><div class="sum-info">Avoidance of the drug is clearly stated in the prescription for the given diplotype.</div>
 <table id="drug_table" border="1" cellspacing="0">
@@ -1561,222 +1591,213 @@ li a:hover:not(.active) {
 <tr><th>Drug</th><th>Category</th><th>Gene</th><th>Variant</th><th>Diplotype</th><th>Level</th><th>Phenotype</th><th>PharmGKB ID</th></tr>
 <tr><td rowspan="2">amitriptyline</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183617714 target="_blank">1183617714</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183617714 target="_blank">1183617714</a></i></td></tr>
 <tr><td rowspan="2">atorvastatin</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>SLCO1B1</td><td></td><td>*37/*37</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1043880630 target="_blank">1043880630</a></i></td></tr>
+<tr><td>SLCO1B1</td><td></td><td>*37/*37</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1043880630 target="_blank">1043880630</a></i></td></tr>
 <tr><td rowspan="5">azathioprine</td>
 <td rowspan="3">Toxicity</td></tr>
-<tr><td>NUDT15</td><td>rs116855232</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184514050 target="_blank">1184514050</a></i></td></tr>
-<tr><td>TPMT</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451237240 target="_blank">1451237240</a></i></td></tr>
+<tr><td>NUDT15</td><td>rs116855232</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184514050 target="_blank">1184514050</a></i></td></tr>
+<tr><td>TPMT</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451237240 target="_blank">1451237240</a></i></td></tr>
 <td rowspan="2">Dosage</td></tr>
-<tr><td>TPMT</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451237326 target="_blank">1451237326</a></i></td></tr>
+<tr><td>TPMT</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451237326 target="_blank">1451237326</a></i></td></tr>
 <tr><td rowspan="3">capecitabine</td>
 <td rowspan="3">Toxicity</td></tr>
-<tr><td>DPYD</td><td>rs3918290</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451274984 target="_blank">1451274984</a></i></td></tr>
-<tr><td>DPYD</td><td>rs55886062</td><td>A/A</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451276160 target="_blank">1451276160</a></i></td></tr>
+<tr><td>DPYD</td><td>rs3918290</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451274984 target="_blank">1451274984</a></i></td></tr>
+<tr><td>DPYD</td><td>rs55886062</td><td>A/A</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451276160 target="_blank">1451276160</a></i></td></tr>
 <tr><td rowspan="2">celecoxib</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451236700 target="_blank">1451236700</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451236700 target="_blank">1451236700</a></i></td></tr>
 <tr><td rowspan="2">clomipramine</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183616699 target="_blank">1183616699</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183616699 target="_blank">1183616699</a></i></td></tr>
 <tr><td rowspan="7">clopidogrel</td>
 <td rowspan="2">Toxicity</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451282440 target="_blank">1451282440</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451282440 target="_blank">1451282440</a></i></td></tr>
 <td rowspan="3">Efficacy</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451282440 target="_blank">1451282440</a></i></td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451282340 target="_blank">1451282340</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451282440 target="_blank">1451282440</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451282340 target="_blank">1451282340</a></i></td></tr>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1043858794 target="_blank">1043858794</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1043858794 target="_blank">1043858794</a></i></td></tr>
 <tr><td rowspan="4">desflurane</td>
 <td rowspan="4">Toxicity</td></tr>
-<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
-<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
-<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
+<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
+<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
+<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
 <tr><td rowspan="2">dexlansoprazole</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451137080 target="_blank">1451137080</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451137080 target="_blank">1451137080</a></i></td></tr>
 <tr><td rowspan="2">doxepin</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183617854 target="_blank">1183617854</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183617854 target="_blank">1183617854</a></i></td></tr>
 <tr><td rowspan="8">efavirenz</td>
 <td rowspan="3">Toxicity</td></tr>
-<tr><td>CYP2B6</td><td></td><td>*1/*6</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451243980 target="_blank">1451243980</a></i></td></tr>
-<tr><td>CYP2B6</td><td>rs3745274</td><td>G/T</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827923042 target="_blank">827923042</a></i></td></tr>
+<tr><td>CYP2B6</td><td></td><td>*1/*6</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451243980 target="_blank">1451243980</a></i></td></tr>
+<tr><td>CYP2B6</td><td>rs3745274</td><td>G/T</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827923042 target="_blank">827923042</a></i></td></tr>
 <td rowspan="2">Dosage</td></tr>
-<tr><td>CYP2B6</td><td></td><td>*1/*6</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451242500 target="_blank">1451242500</a></i></td></tr>
+<tr><td>CYP2B6</td><td></td><td>*1/*6</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451242500 target="_blank">1451242500</a></i></td></tr>
 <td rowspan="3">Metabolism</td></tr>
-<tr><td>CYP2B6</td><td></td><td>*1/*6</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184133833 target="_blank">1184133833</a></i></td></tr>
-<tr><td>CYP2B6</td><td>rs3745274</td><td>G/T</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827923032 target="_blank">827923032</a></i></td></tr>
+<tr><td>CYP2B6</td><td></td><td>*1/*6</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184133833 target="_blank">1184133833</a></i></td></tr>
+<tr><td>CYP2B6</td><td>rs3745274</td><td>G/T</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827923032 target="_blank">827923032</a></i></td></tr>
 <tr><td rowspan="4">enflurane</td>
 <td rowspan="4">Toxicity</td></tr>
-<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
-<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
-<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
+<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
+<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
+<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
 <tr><td rowspan="8">fluorouracil</td>
 <td rowspan="3">Toxicity</td></tr>
-<tr><td>DPYD</td><td>rs3918290</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827843617 target="_blank">827843617</a></i></td></tr>
-<tr><td>DPYD</td><td>rs55886062</td><td>A/A</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183630664 target="_blank">1183630664</a></i></td></tr>
+<tr><td>DPYD</td><td>rs3918290</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827843617 target="_blank">827843617</a></i></td></tr>
+<tr><td>DPYD</td><td>rs55886062</td><td>A/A</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183630664 target="_blank">1183630664</a></i></td></tr>
 <td rowspan="5">Other</td></tr>
-<tr><td>DPYD</td><td>rs1801266</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447989706 target="_blank">1447989706</a></i></td></tr>
-<tr><td>DPYD</td><td>rs3918290</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451275020 target="_blank">1451275020</a></i></td></tr>
-<tr><td>DPYD</td><td>rs55886062</td><td>A/A</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451275220 target="_blank">1451275220</a></i></td></tr>
-<tr><td>DPYD</td><td>rs72549303</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447989671 target="_blank">1447989671</a></i></td></tr>
+<tr><td>DPYD</td><td>rs1801266</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447989706 target="_blank">1447989706</a></i></td></tr>
+<tr><td>DPYD</td><td>rs3918290</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451275020 target="_blank">1451275020</a></i></td></tr>
+<tr><td>DPYD</td><td>rs55886062</td><td>A/A</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451275220 target="_blank">1451275220</a></i></td></tr>
+<tr><td>DPYD</td><td>rs72549303</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447989671 target="_blank">1447989671</a></i></td></tr>
 <tr><td rowspan="2">flurbiprofen</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1444842106 target="_blank">1444842106</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1444842106 target="_blank">1444842106</a></i></td></tr>
 <tr><td rowspan="4">fluvastatin</td>
 <td rowspan="2">Toxicity</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451678600 target="_blank">1451678600</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451678600 target="_blank">1451678600</a></i></td></tr>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451666740 target="_blank">1451666740</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451666740 target="_blank">1451666740</a></i></td></tr>
 <tr><td rowspan="4">halothane</td>
 <td rowspan="4">Toxicity</td></tr>
-<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
-<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
-<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
+<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
+<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
+<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
 <tr><td rowspan="2">ibuprofen</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092720 target="_blank">1451092720</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092720 target="_blank">1451092720</a></i></td></tr>
 <tr><td rowspan="2">imipramine</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183617103 target="_blank">1183617103</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183617103 target="_blank">1183617103</a></i></td></tr>
 <tr><td rowspan="2">irinotecan</td>
 <td rowspan="2">Toxicity</td></tr>
-<tr><td>UGT1A1</td><td>rs10929302</td><td>G/A</td><td style="color:#216ED4">2A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/982030836 target="_blank">982030836</a></i></td></tr>
+<tr><td>UGT1A1</td><td>rs10929302</td><td>G/A</td><td><span class="level-2a2b">2A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/982030836 target="_blank">982030836</a></i></td></tr>
 <tr><td rowspan="4">isoflurane</td>
 <td rowspan="4">Toxicity</td></tr>
-<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
-<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
-<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
+<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
+<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
+<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
 <tr><td rowspan="4">lansoprazole</td>
 <td rowspan="2">Efficacy</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183629796 target="_blank">1183629796</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183629796 target="_blank">1183629796</a></i></td></tr>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1450806874 target="_blank">1450806874</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1450806874 target="_blank">1450806874</a></i></td></tr>
 <tr><td rowspan="2">lornoxicam</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183703296 target="_blank">1183703296</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183703296 target="_blank">1183703296</a></i></td></tr>
 <tr><td rowspan="2">meloxicam</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092677 target="_blank">1451092677</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092677 target="_blank">1451092677</a></i></td></tr>
 <tr><td rowspan="7">mercaptopurine</td>
 <td rowspan="3">Toxicity</td></tr>
-<tr><td>NUDT15</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451448820 target="_blank">1451448820</a></i></td></tr>
-<tr><td>TPMT</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184648909 target="_blank">1184648909</a></i></td></tr>
+<tr><td>NUDT15</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451448820 target="_blank">1451448820</a></i></td></tr>
+<tr><td>TPMT</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184648909 target="_blank">1184648909</a></i></td></tr>
 <td rowspan="4">Dosage</td></tr>
-<tr><td>NUDT15</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1448635217 target="_blank">1448635217</a></i></td></tr>
-<tr><td>NUDT15</td><td>rs116855232</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451290840 target="_blank">1451290840</a></i></td></tr>
-<tr><td>TPMT</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451237200 target="_blank">1451237200</a></i></td></tr>
+<tr><td>NUDT15</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1448635217 target="_blank">1448635217</a></i></td></tr>
+<tr><td>NUDT15</td><td>rs116855232</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451290840 target="_blank">1451290840</a></i></td></tr>
+<tr><td>TPMT</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451237200 target="_blank">1451237200</a></i></td></tr>
 <tr><td rowspan="4">methoxyflurane</td>
 <td rowspan="4">Toxicity</td></tr>
-<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
-<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
-<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
+<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
+<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
+<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
 <tr><td rowspan="4">omeprazole</td>
 <td rowspan="2">Efficacy</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183630036 target="_blank">1183630036</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183630036 target="_blank">1183630036</a></i></td></tr>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183630065 target="_blank">1183630065</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183630065 target="_blank">1183630065</a></i></td></tr>
 <tr><td rowspan="4">pantoprazole</td>
 <td rowspan="2">Efficacy</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183624499 target="_blank">1183624499</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183624499 target="_blank">1183624499</a></i></td></tr>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183624491 target="_blank">1183624491</a></i></td></tr>
-<tr><td rowspan="7">peginterferon alfa-2a</td>
-<td rowspan="7">Efficacy</td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
-<tr><td rowspan="9">peginterferon alfa-2b</td>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183624491 target="_blank">1183624491</a></i></td></tr>
+<tr><td rowspan="4">peginterferon alfa-2a</td>
+<td rowspan="4">Efficacy</td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
+<tr><td rowspan="6">peginterferon alfa-2b</td>
 <td rowspan="2">Toxicity</td></tr>
-<tr><td>ITPA</td><td>rs7270101</td><td>A/A</td><td style="color:#216ED4">2B</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1446905703 target="_blank">1446905703</a></i></td></tr>
-<td rowspan="7">Efficacy</td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
+<tr><td>ITPA</td><td>rs7270101</td><td>A/A</td><td><span class="level-2a2b">2B</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1446905703 target="_blank">1446905703</a></i></td></tr>
+<td rowspan="4">Efficacy</td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
 <tr><td rowspan="4">phenytoin</td>
 <td rowspan="2">Toxicity</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/981238501 target="_blank">981238501</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/981238501 target="_blank">981238501</a></i></td></tr>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/982047500 target="_blank">982047500</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/982047500 target="_blank">982047500</a></i></td></tr>
 <tr><td rowspan="2">piroxicam</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092541 target="_blank">1451092541</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092541 target="_blank">1451092541</a></i></td></tr>
 <tr><td rowspan="2">pitavastatin</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>SLCO1B1</td><td></td><td>*37/*37</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1450814813 target="_blank">1450814813</a></i></td></tr>
+<tr><td>SLCO1B1</td><td></td><td>*37/*37</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1450814813 target="_blank">1450814813</a></i></td></tr>
 <tr><td rowspan="2">pravastatin</td>
 <td rowspan="2">Efficacy</td></tr>
-<tr><td>KIF6</td><td>rs20455</td><td>G/G</td><td style="color:#216ED4">2B</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655384621 target="_blank">655384621</a></i></td></tr>
-<tr><td rowspan="9">ribavirin</td>
+<tr><td>KIF6</td><td>rs20455</td><td>G/G</td><td><span class="level-2a2b">2B</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655384621 target="_blank">655384621</a></i></td></tr>
+<tr><td rowspan="6">ribavirin</td>
 <td rowspan="2">Toxicity</td></tr>
-<tr><td>ITPA</td><td>rs7270101</td><td>A/A</td><td style="color:#216ED4">2B</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1446905703 target="_blank">1446905703</a></i></td></tr>
-<td rowspan="7">Efficacy</td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
-<tr><td>IFNL3</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
-<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
+<tr><td>ITPA</td><td>rs7270101</td><td>A/A</td><td><span class="level-2a2b">2B</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1446905703 target="_blank">1446905703</a></i></td></tr>
+<td rowspan="4">Efficacy</td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183888969 target="_blank">1183888969</a></i></td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183680546 target="_blank">1183680546</a></i></td></tr>
+<tr><td>IFNL4</td><td>rs12979860</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/827862764 target="_blank">827862764</a></i></td></tr>
 <tr><td rowspan="2">rosuvastatin</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>SLCO1B1</td><td></td><td>*37/*37</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1043880701 target="_blank">1043880701</a></i></td></tr>
+<tr><td>SLCO1B1</td><td></td><td>*37/*37</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1043880701 target="_blank">1043880701</a></i></td></tr>
 <tr><td rowspan="4">sevoflurane</td>
 <td rowspan="4">Toxicity</td></tr>
-<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
-<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
-<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
+<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
+<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
+<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
 <tr><td rowspan="4">succinylcholine</td>
 <td rowspan="4">Toxicity</td></tr>
-<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
-<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
-<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
+<tr><td>RYR1</td><td>rs118192161</td><td>C/C</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183705759 target="_blank">1183705759</a></i></td></tr>
+<tr><td>RYR1</td><td>rs1801086</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1445400186 target="_blank">1445400186</a></i></td></tr>
+<tr><td>RYR1</td><td>rs193922807</td><td>G/G</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447676077 target="_blank">1447676077</a></i></td></tr>
 <tr><td rowspan="10">tacrolimus</td>
 <td rowspan="5">Dosage</td></tr>
-<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/981203719 target="_blank">981203719</a></i></td></tr>
-<tr><td>CYP3A4</td><td></td><td>*1/*1</td><td style="color:#216ED4">2A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451251080 target="_blank">1451251080</a></i></td></tr>
-<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td style="color:#216ED4">2A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451241700 target="_blank">1451241700</a></i></td></tr>
-<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td style="color:#216ED4">2A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451243216 target="_blank">1451243216</a></i></td></tr>
+<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/981203719 target="_blank">981203719</a></i></td></tr>
+<tr><td>CYP3A4</td><td></td><td>*1/*1</td><td><span class="level-2a2b">2A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451251080 target="_blank">1451251080</a></i></td></tr>
+<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td><span class="level-2a2b">2A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451241700 target="_blank">1451241700</a></i></td></tr>
+<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td><span class="level-2a2b">2A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451243216 target="_blank">1451243216</a></i></td></tr>
 <td rowspan="5">Metabolism</td></tr>
-<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451214480 target="_blank">1451214480</a></i></td></tr>
-<tr><td>CYP3A4</td><td></td><td>*1/*1</td><td style="color:#25B16B">1B</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183689931 target="_blank">1183689931</a></i></td></tr>
-<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td style="color:#25B16B">1B</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451241780 target="_blank">1451241780</a></i></td></tr>
-<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td style="color:#25B16B">1B</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184999911 target="_blank">1184999911</a></i></td></tr>
+<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451214480 target="_blank">1451214480</a></i></td></tr>
+<tr><td>CYP3A4</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1B</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183689931 target="_blank">1183689931</a></i></td></tr>
+<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td><span class="level-1a1b">1B</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451241780 target="_blank">1451241780</a></i></td></tr>
+<tr><td>CYP3A5</td><td></td><td>*3/*3</td><td><span class="level-1a1b">1B</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1184999911 target="_blank">1184999911</a></i></td></tr>
 <tr><td rowspan="2">tenoxicam</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092460 target="_blank">1451092460</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1451092460 target="_blank">1451092460</a></i></td></tr>
 <tr><td rowspan="2">trimipramine</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183621987 target="_blank">1183621987</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183621987 target="_blank">1183621987</a></i></td></tr>
 <tr><td rowspan="2">voriconazole</td>
 <td rowspan="2">Metabolism</td></tr>
-<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183689217 target="_blank">1183689217</a></i></td></tr>
+<tr><td>CYP2C19</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1183689217 target="_blank">1183689217</a></i></td></tr>
 <tr><td rowspan="17">warfarin</td>
 <td rowspan="5">Toxicity</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672658 target="_blank">1447672658</a></i></td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672988 target="_blank">1447672988</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td style="color:#25B16B">1B</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447673005 target="_blank">1447673005</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td style="color:#216ED4">2A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1449269910 target="_blank">1449269910</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672988 target="_blank">1447672988</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672658 target="_blank">1447672658</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td><span class="level-1a1b">1B</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447673005 target="_blank">1447673005</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td><span class="level-2a2b">2A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1449269910 target="_blank">1449269910</a></i></td></tr>
 <td rowspan="8">Dosage</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#25B16B">1A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/981238341 target="_blank">981238341</a></i></td></tr>
-<tr><td>CYP4F2</td><td>rs2108622</td><td>C/T</td><td style="color:#25B16B">1A</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385400 target="_blank">655385400</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td style="color:#25B16B">1A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385012 target="_blank">655385012</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs2359612</td><td>A/G</td><td style="color:#25B16B">1B</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385024 target="_blank">655385024</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs7294</td><td>C/T</td><td style="color:#25B16B">1B</td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655384733 target="_blank">655384733</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs8050894</td><td>C/G</td><td style="color:#25B16B">1B</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385028 target="_blank">655385028</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs9934438</td><td>G/A</td><td style="color:#25B16B">1B</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385392 target="_blank">655385392</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-1a1b">1A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/981238341 target="_blank">981238341</a></i></td></tr>
+<tr><td>CYP4F2</td><td>rs2108622</td><td>C/T</td><td><span class="level-1a1b">1A</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385400 target="_blank">655385400</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td><span class="level-1a1b">1A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385012 target="_blank">655385012</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs2359612</td><td>A/G</td><td><span class="level-1a1b">1B</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385024 target="_blank">655385024</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs7294</td><td>C/T</td><td><span class="level-1a1b">1B</span></td><td style="color:#BC3837">⤊ Increased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655384733 target="_blank">655384733</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs8050894</td><td>C/G</td><td><span class="level-1a1b">1B</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385028 target="_blank">655385028</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs9934438</td><td>G/A</td><td><span class="level-1a1b">1B</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/655385392 target="_blank">655385392</a></i></td></tr>
 <td rowspan="4">Efficacy</td></tr>
-<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td style="color:#216ED4">2A</td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672600 target="_blank">1447672600</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td style="color:#216ED4">2A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672998 target="_blank">1447672998</a></i></td></tr>
-<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td style="color:#216ED4">2A</td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447673015 target="_blank">1447673015</a></i></td></tr>
+<tr><td>CYP2C9</td><td></td><td>*1/*1</td><td><span class="level-2a2b">2A</span></td><td style="color:#35787F">◎ Normal</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672600 target="_blank">1447672600</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td><span class="level-2a2b">2A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447672998 target="_blank">1447672998</a></i></td></tr>
+<tr><td>VKORC1</td><td>rs9923231</td><td>C/T</td><td><span class="level-2a2b">2A</span></td><td style="color:#563E82">⤋ Decreased</td><td><a href=https://www.pharmgkb.org/clinicalAnnotation/1447673015 target="_blank">1447673015</a></i></td></tr>
 </table>
 
     <h2 id="about"><b>About</b></h2>
@@ -1788,6 +1809,7 @@ li a:hover:not(.active) {
       When using results obtained from PAnno, you agree to cite PAnno.
     </p>
     </div>
+
     <div class="footer">
       <p>
         <strong>
@@ -1800,6 +1822,7 @@ li a:hover:not(.active) {
         Copyright &copy; 2021-2022 Center for Pharmacogenomics, Fudan University, China. All Rights Reserved.
       </p>
     </div>
+    
     </body>
     </html>
     

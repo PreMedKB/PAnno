@@ -1,7 +1,7 @@
 import getopt, sys, os
 from panno import genotype_resolution, clinical_annotation, pgx_report, predict_diplotype
 
-demos = {'NA10859':'EUR'}#, 'NA19147': 'AAC', 'NA19785':'LAT', 'HG00436':'EAS'}
+demos = {'NA10859':'EUR', 'NA19147': 'AAC', 'NA19785':'LAT', 'HG00436':'EAS'}
 pop_dic = {'AAC': 'African American/Afro-Caribbean', 'AME': 'American', 'SAS': 'Central/South Asian', 'EAS': 'East Asian', 'EUR': 'European', 'LAT': 'Latino', 'NEA': 'Near Eastern', 'OCE': 'Oceanian', 'SSA': 'Sub-Saharan African'}
 
 for sample_id in demos.keys():
