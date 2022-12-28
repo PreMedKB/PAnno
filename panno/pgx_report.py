@@ -9,12 +9,12 @@ from itertools import *
 def report (race, summary, prescribing_info, multi_var, single_var, phenotype_predict, clinical_anno, fp, sample_id):
   with open(fp, 'w+', encoding="utf-8") as f:
     ## Style
-    # css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
-    # logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
-    # icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
-    css_fp = os.path.join('./panno/assets/custom.css')
-    logo_fp = os.path.join('./panno/assets/panno_logo.png')
-    icon_fp = os.path.join('./panno/assets/panno_icon.png')
+    css_fp = os.path.join(os.path.dirname(__file__), 'assets/custom.css')
+    logo_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_logo.png')
+    icon_fp = os.path.join(os.path.dirname(__file__), 'assets/panno_icon.png')
+    # css_fp = os.path.join('./panno/assets/custom.css')
+    # logo_fp = os.path.join('./panno/assets/panno_logo.png')
+    # icon_fp = os.path.join('./panno/assets/panno_icon.png')
     logo_base64 = base64.b64encode(open(logo_fp, "rb").read()).decode()
     icon_base64 = base64.b64encode(open(icon_fp, "rb").read()).decode()
     
@@ -56,7 +56,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     
     <div class="main_page">
     """
-    print(head_nav%(icon_base64, open(css_fp).read(), icon_base64, 'v0.3.0'), file=f)
+    print(head_nav%(icon_base64, open(css_fp).read(), icon_base64, 'v0.3.1'), file=f)
     
 
     ## Part 0: Basic information
@@ -95,7 +95,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     """
     print(part2_header, file=f)
     
-    print('<b class="sum-A">Avoid use</b><br><div class="sum-info">Avoidance of the drug is clearly stated in the prescription for the given diplotype.</div>',file=f)
+    print('<b class="sum-A">Avoid use</b><br><div class="sum-info">Avoidance of a drug is clearly stated in the prescribing recommendations for the given diplotype.</div>',file=f)
     
     header = '<table id="drug_table" border="1" cellspacing="0">\n'
     i = 0
@@ -135,7 +135,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     header = header + '\n</table>'
     print(header, file=f)
     
-    print('<b class="sum-U">Use with caution</b><br><div class="sum-info">Prescribing changes are recommended for the given diplotypes, e.g., dose adjustments and alternative medications. In addition, prescriptions that differ in specific populations or require consideration of multiple diplotypes are included in this category.</div>',file=f)
+    print('<b class="sum-U">Use with caution</b><br><div class="sum-info">Prescribing changes are recommended for the given diplotype, e.g., dose adjustment and alternative medication. In addition, prescribing recommendations that differ in specific populations or require consideration of multiple diplotypes are included in this category.</div>',file=f)
     header = '<table id="drug_table" border="1" cellspacing="0">\n'
     i = 0
     while i<len(summary['Caution']):
@@ -243,9 +243,8 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     
     ## Part 4: Diplotype Detail
     print('<h2 id="diplotype detail"><b>Diplotype Detail</b></h2>', file=f)
-    print('<p class="main_lead">The PAnno model was applied to the prediction of diplotypes involving multi-variant variants. The genes involved include CYP2B6, CYP2C19, CYP2C8, CYP2C9, CYP2D6, CYP3A4, CYP3A5, CYP4F2, DPYD, NUDT15, SLCO1B1, TPMT, and UGT1A1. PAnno assumes that no variation occurs for the missing positions in the submitted VCFs, and the final inferred diplotypes are a composite ranking result.</p>', file=f)
-    
     print('<h3 id="multi-variant"><b>Multi-variant allele</b></h3>', file=f)
+    print('<p class="main_lead">PAnno ranking model is applied to predict diplotypes consisting of multiple variants. The diplotypes are inferred by integrating allele definition consistency as well as the population allele frequency. PGx genes include CYP2B6, CYP2C19, CYP2C8, CYP2C9, CYP2D6, CYP3A4, CYP3A5, CYP4F2, DPYD, NUDT15, SLCO1B1, TPMT, and UGT1A1. Note that PAnno assumes that no variation occurs for the missing positions in the submitted VCF file.</p>', file=f)
     for gene in ["CYP2B6", "CYP2C8", "CYP2C9", "CYP2C19", "CYP2D6", "CYP3A4", "CYP3A5", "CYP4F2", "DPYD", "NUDT15", "SLCO1B1", "TPMT", "UGT1A1"]:
       diplotype_by_gene = multi_var[multi_var.Gene == gene]
       dip = list(diplotype_by_gene.Diplotype.drop_duplicates())
@@ -253,13 +252,13 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
         print('Warning: There is more than one diplotype of %s inferred by PAnno.' % gene)
       print('<h3><b>%s: %s</b></h3>' % (gene, ''.join(dip)), file=f)
       if (gene == "CYP2B6"):
-        print('<div class="alert alert-info-red">Please notice that CYP2B6*29, CYP2B6*30 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
+        print('<div class="alert alert-info-red">Please notice that CYP2B6*29, CYP2B6*30 are not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
       if (gene == "CYP2C19"):
-        print('<div class="alert alert-info-red">Please notice that CYP2C19*36, CYP2C19*37 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
+        print('<div class="alert alert-info-red">Please notice that CYP2C19*36, CYP2C19*37 are not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
       if (gene == "CYP2D6"):
-        print('<div class="alert alert-info-red">Please notice that CYP2D6*5, CYP2D6*13, CYP2D6*61, CYP2D6*63, CYP2D6*68 and CYP2D6 CNVs were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
+        print('<div class="alert alert-info-red">Please notice that CYP2D6*5, CYP2D6*13, CYP2D6*61, CYP2D6*63, CYP2D6*68 and CYP2D6 CNVs are not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
       if (gene == "SLCO1B1"):
-        print('<div class="alert alert-info-red">Please notice that SLCO1B1*48, SLCO1B1*49 were not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
+        print('<div class="alert alert-info-red">Please notice that SLCO1B1*48, SLCO1B1*49 are not considered in the current version, which could potentially have an impact on the results.</div>', file=f)
       
       alleles_definition = diplotype_by_gene['Definition of Alleles'].str.split("; |:", expand=True)
       if alleles_definition.shape[1] == 4:
@@ -286,6 +285,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
       print(header, file=f)
     
     print('<h3 id="single-variant"><b>Single-variant allele</b></h3>', file=f)
+    print('<p class="main_lead">Single-variant alleles constitute diplotypes that do not involve the judgment of multiple variants and the corresponding genes generally have not yet been standardized by a nomenclature committee, such as rs9923231 for VKORC1.</p>', file=f)
     header = '<table id="customer_table" border="1" cellspacing="0">\n<tr><th width="200px">Gene</th><th width="200px">Variant</th><th width="200px">Variant Call</th></tr>'
     for index, row in single_var.iterrows():
       co = 'color:#7C3A37;' if (row['Variant Call'] == "Missing") else 'color:#444'
@@ -306,7 +306,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     
     phenotype_header = """
     <h2 id="phenotype prediction"><b>Phenotype Prediction</b></h2>
-    <p class="main_lead">For the clinically available drugs, PAnno integrates the effects of multiple diplotypes for each drug in terms of toxicity, dosage, efficacy, and metabolism. The predicted phenotypes are based on the original annotations described in the following section, and the integrated phenotypes are indicated as decreased, normal, and increased.</p>
+    <p class="main_lead">For the clinically available drugs, PAnno integrates the effects of multiple diplotypes for each drug in terms of toxicity, dosage, efficacy, and metabolism. The predicted phenotypes are based on PharmGKB's high-confidence clinical annotations (evidence levels 1A, 1B, 2A, 2B) and are indicated as decreased, normal, and increased.</p>
     <div class="alert alert-info-blue">
       Drugs not further annotated due to "Avoid use": %s.<br>Drugs not included in clinical annotations used by PAnno: %s.
     </div>
@@ -415,7 +415,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     
     # Part 6: Clinical Annotation
     print('<h2 id="clinical annotation"><b>Clinical Annotation</b></h2>', file=f)
-    print('<p class="main_lead">PAnno annotates PGx-related diplotypes using the high-confidence clinical annotations from PharmGKB (1A, 1B, 2A, 2B), which is the basis for predicting the phenotypes in the above section.</p>', file=f)
+    print('<p class="main_lead">This section lists the clinical annotations on which the phenotype predictions are based.</p>', file=f)
     
     header = '<table id="atable" border="1" cellspacing="0">\n<tr><th>Drug</th><th>Category</th><th>Gene</th><th>Variant</th><th>Diplotype</th><th>Level</th><th>Phenotype</th><th>PharmGKB ID</th></tr>'
     for drug in list(clinical_anno.Drug.drop_duplicates()):
@@ -462,7 +462,7 @@ def report (race, summary, prescribing_info, multi_var, single_var, phenotype_pr
     <div class="footer">
       <p>
         <strong>
-          <a href="https://github.com/PreMedKB/PAnno" target="_blank">PAnno v0.3.0</a>
+          <a href="https://github.com/PreMedKB/PAnno" target="_blank">PAnno v0.3.1</a>
         </strong>
         - Written by Yaqing Liu, et al.,
         available at <a href="https://github.com/PreMedKB/PAnno" target="_blank">GitHub</a>,

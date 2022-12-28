@@ -10,8 +10,8 @@ import numpy as np
 def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   
   ## Connected database
-  # pgx_kb_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_kb.sqlite3')
-  pgx_kb_fp = "./panno/assets/pgx_kb.sqlite3"
+  pgx_kb_fp = os.path.join(os.path.dirname(__file__), 'assets/pgx_kb.sqlite3')
+  # pgx_kb_fp = "./panno/assets/pgx_kb.sqlite3"
   conn = sqlite3.connect(pgx_kb_fp)
   cursor = conn.cursor()
   
@@ -149,7 +149,7 @@ def annotation(dic_diplotype, dic_rs2gt, hla_subtypes):
   detected_hla_df = pd.DataFrame(detected_hla, columns=['Gene', 'Variant', 'Variant Call', 'Phenotype']).drop(columns=['Phenotype'])
   
   # 1. SNP/Indel
-  rsid_anno = cursor.execute('SELECT Gene, Variant FROM ClinAnn WHERE EvidenceLevel != 3 AND Variant LIKE "rs%";')
+  rsid_anno = cursor.execute('SELECT DISTINCT Gene, Variant FROM ClinAnn WHERE EvidenceLevel != 3 AND Variant LIKE "rs%" AND (Gene != "IFNL3" OR Variant != "rs12979860");')
   rsid_anno = cursor.fetchall()
   rsid_anno_df = pd.DataFrame(rsid_anno, columns = ['Gene', 'Variant'])
   rsid_guide_df = rule_df[rule_df.Variant.str.startswith('rs')][['Gene', 'Variant']]

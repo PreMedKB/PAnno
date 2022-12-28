@@ -12,12 +12,12 @@ PAnno reports **prescribing recommendations** and **drug response phenotypes** b
 
 1. You can install PAnno from [PyPI](https://pypi.org/project/panno/) using pip as follows:
 ```Shell
-pip install panno==0.3.0
+pip install panno==0.3.1
 ```
 
 2. Alternatively, you can create a environment using [Conda](https://anaconda.org/lyaqing/panno).
 ```Shell
-conda create -n PAnno panno=0.3.0 -c lyaqing -c conda-forge -c bioconda
+conda create -n PAnno panno=0.3.1 -c lyaqing -c conda-forge -c bioconda
 conda activate PAnno
 ```
 

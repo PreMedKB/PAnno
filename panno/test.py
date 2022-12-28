@@ -21,3 +21,4 @@ for sample_id in demos.keys():
   race = "%s (%s)" % (pop_dic[population], population)
   fp = os.path.join(outdir, "%s.PAnno.html" % sample_id)
   pgx_report.report(race, summary, prescribing_info, multi_var, single_var, phenotype_predict, clinical_anno, fp, sample_id)
+
